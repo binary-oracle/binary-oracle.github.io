@@ -35,7 +35,7 @@ Before extending the logical volume, verify the current disk layout and LVM conf
 
 Run the following commands:
 
-```console
+```bash
 [root@oracle7 ~]# lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sr0                 11:0    1 1024M  0 rom
@@ -94,7 +94,7 @@ After attaching the new disk to the virtual machine, verify that the operating s
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                  8:16   0  100G  0 disk
@@ -117,7 +117,7 @@ In this example, the entire 50 GB disk is allocated to a single partition.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# fdisk /dev/sdb
 Welcome to fdisk (util-linux 2.23.2).
 
@@ -152,7 +152,7 @@ Verify that the new partition has been created successfully.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                  8:16   0  100G  0 disk
@@ -174,7 +174,7 @@ Initialize the new partition as an LVM physical volume.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# pvcreate /dev/sdb1
   Physical volume "/dev/sdb1" successfully created.
 
@@ -190,7 +190,7 @@ Verify the existing volume group.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# vgs
   VG        #PV #LV #SN Attr   VSize   VFree
   lv_system   1   3   0 wz--n- <99.00g 4.00m
@@ -200,7 +200,7 @@ Add the new physical volume to the existing volume group.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# vgextend lv_system /dev/sdb1
   Volume group "lv_system" successfully extended
 ```
@@ -209,7 +209,7 @@ Verify that the volume group has been extended.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# vgs
   VG        #PV #LV #SN Attr   VSize   VFree
   lv_system   2   3   0 wz--n- 148.99g 50.00g
@@ -223,7 +223,7 @@ IVerify the current logical volume sizes.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# lvs
   LV   VG        Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   home lv_system -wi-ao---- 41.99g
@@ -235,7 +235,7 @@ Extend the `root` logical volume by **10 GB**.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# lvextend -L +10G /dev/lv_system/root
   Size of logical volume lv_system/root changed from 50.00 GiB (12800 extents) to 60.00 GiB (15360 extents).
   Logical volume lv_system/root successfully resized.
@@ -245,7 +245,7 @@ Verify the new logical volume size.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# lvs
   LV   VG        Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   home lv_system -wi-ao---- 41.99g
@@ -259,7 +259,7 @@ Verify the filesystem.
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# df -h
 Filesystem                  Size  Used Avail Use% Mounted on
 devtmpfs                    6.9G     0  6.9G   0% /dev
@@ -278,7 +278,7 @@ Grow the XFS filesystem to use the additional space allocated to the logical vol
 
 Run the following command:
 
-```console
+```bash
 [root@oracle7 ~]# xfs_growfs /dev/lv_system/root
 meta-data=/dev/mapper/lv_system-root isize=256    agcount=4, agsize=3276800 blks
          =                       sectsz=512   attr=2, projid32bit=1
@@ -294,7 +294,7 @@ data blocks changed from 13107200 to 15728640
 
 > If the logical volume uses an **ext4** filesystem instead of **XFS**, use the following command:
 
-```console
+```bash
 resize2fs /dev/lv_system/root
 ```
 
@@ -304,7 +304,7 @@ Verify that the filesystem now reflects the new logical volume size.
 
 Run the following command::
 
-```console
+```bash
 [root@oracle7 ~]# df -h
 Filesystem                  Size  Used Avail Use% Mounted on
 devtmpfs                    6.9G     0  6.9G   0% /dev

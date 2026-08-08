@@ -37,7 +37,7 @@ Set the required ownership and permissions.
 
 Run the following commands:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# chmod 755 OlvmKvmCerts
 [root@mgmt-olvm01 ~]# chown root:root OlvmKvmCerts
 ```
@@ -48,13 +48,13 @@ Execute the utility without arguments to confirm that it is accessible and to di
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts
 ```
 
 Expected output:
 
-```console
+```bash
 Usage: OlvmKvmCert [OPTION] <HOST|CLUSTER>
 
 status                    Display the status of all certificates on the Engine host
@@ -73,27 +73,27 @@ Display the current certificate expiration dates for the Oracle Linux Virtualiza
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts status
 ```
 
 Example output:
 
-```console
+```bash
 reports.cer                                          Mar  3 13:11:53 2026 GMT
 kvm01.fra.techsolutions.de.cer                       Jun 14 07:47:58 2026 GMT
 ovn-ndb.cer                                          Mar  3 13:11:54 2026 GMT
 jboss.cer                                            Mar  3 13:11:53 2026 GMT
 ovirt-provider-ovn.cer                               Mar  3 13:11:54 2026 GMT
-vmconsole-proxy-host.cer                             Mar  3 13:12:03 2026 GMT
+vmbash-proxy-host.cer                             Mar  3 13:12:03 2026 GMT
 websocket-proxy.cer                                  Mar  3 13:11:53 2026 GMT
 kvm02.fra.techsolutions.de.cer                       Jun 24 12:08:16 2026 GMT
 imageio-proxy.cer                                    Mar  3 13:11:54 2026 GMT
 engine.cer                                           Mar  3 13:11:53 2026 GMT
 apache.cer                                           Mar  3 13:11:53 2026 GMT
 ovn-sdb.cer                                          Mar  3 13:11:54 2026 GMT
-vmconsole-proxy-user.cer                             Mar  3 13:12:03 2026 GMT
-vmconsole-proxy-helper.cer                           Mar  3 13:12:03 2026 GMT
+vmbash-proxy-user.cer                             Mar  3 13:12:03 2026 GMT
+vmbash-proxy-helper.cer                           Mar  3 13:12:03 2026 GMT
 ```
 
 Review the certificate expiration dates before proceeding with certificate renewal.
@@ -104,7 +104,7 @@ Before renewing the Engine certificates, create a backup of the current PKI dire
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# tar cf /var/tmp/pki$(date '+%Y%m%d%H%M%S').tar /etc/pki/
 tar: Removing leading '/' from member names
 
@@ -122,7 +122,7 @@ In a standalone Engine deployment, renew the Engine certificates by running `eng
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# engine-setup --offline
 ```
 
@@ -136,7 +136,7 @@ During the renewal process:
 
 Example output:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# engine-setup --offline
 [ INFO  ] Stage: Initializing
 [ INFO  ] Stage: Environment setup
@@ -235,7 +235,7 @@ Example output:
           DWH database port                       : 5432
           DWH database host name validation       : False
           Configure Image I/O Proxy               : True
-          Configure VMConsole Proxy               : True
+          Configure VMbash Proxy               : True
 
           Please confirm installation settings (OK, Cancel) [OK]: OK
 [ INFO  ] Cleaning async tasks and compensations
@@ -246,7 +246,7 @@ Example output:
 [ INFO  ] Stopping ovirt-fence-kdump-listener service
 [ INFO  ] Stopping dwh service
 [ INFO  ] Stopping Image I/O Proxy service
-[ INFO  ] Stopping vmconsole-proxy service
+[ INFO  ] Stopping vmbash-proxy service
 [ INFO  ] Stopping websocket-proxy service
 [ INFO  ] Stage: Misc configuration (early)
 [ INFO  ] Stage: Package installation
@@ -276,7 +276,7 @@ Example output:
 [ INFO  ] Stage: Closing up
 [ INFO  ] Starting engine service
 [ INFO  ] Starting dwh service
-[ INFO  ] Restarting ovirt-vmconsole proxy service
+[ INFO  ] Restarting ovirt-vmbash proxy service
 
           --== SUMMARY ==--
 
@@ -304,7 +304,7 @@ After the certificate renewal completes, verify that the Engine certificates hav
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts status
 
     reports.cer                                         Jan 18 17:58:22 2031 GMT
@@ -312,42 +312,42 @@ Run the following command:
     ovn-ndb.cer                                         Mar  3 13:11:54 2026 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Mar  3 13:11:54 2026 GMT
-    vmconsole-proxy-host.cer                            Mar  3 13:12:03 2026 GMT
+    vmbash-proxy-host.cer                            Mar  3 13:12:03 2026 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer 	                    Jun 24 12:08:16 2026 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Mar  3 13:11:54 2026 GMT
-    vmconsole-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
-    vmconsole-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
+    vmbash-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
+    vmbash-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
 ```
 
 Review the output and confirm that the certificate expiration dates reflect the new validity period.
 
 > Depending on the OLVM release, not all certificates are renewed automatically. This behavior was addressed in **OLVM 4.4.10.7-1.0.24** and later releases.
 
-## Renew the VMConsole Certificates
+## Renew the VMbash Certificates
 
-This procedure regenerates the VMConsole Proxy certificates on the OLVM Engine.
+This procedure regenerates the VMbash Proxy certificates on the OLVM Engine.
 
 > For Hosted Engine deployments, enable **Global Maintenance Mode** before performing this procedure. Disable Global Maintenance Mode after the renewal has completed successfully.
 
-Back up the existing VMConsole certificate files before regenerating them.
+Back up the existing VMbash certificate files before regenerating them.
 
 Run the following commands:
-```console
+```bash
 [root@mgmt-olvm01 ~]# cd /etc/pki/ovirt-engine/keys
-[root@mgmt-olvm01 keys]# mv vmconsole-proxy-host.p12 vmconsole-proxy-host.p12.bckp
-[root@mgmt-olvm01 keys]# mv vmconsole-proxy-helper.key.nopass vmconsole-proxy-helper.key.nopass.bckp
+[root@mgmt-olvm01 keys]# mv vmbash-proxy-host.p12 vmbash-proxy-host.p12.bckp
+[root@mgmt-olvm01 keys]# mv vmbash-proxy-helper.key.nopass vmbash-proxy-helper.key.nopass.bckp
 [root@mgmt-olvm01 keys]# cd /etc/pki/
-[root@mgmt-olvm01 pki]# mv ovirt-vmconsole ovirt-vmconsole_bkp
+[root@mgmt-olvm01 pki]# mv ovirt-vmbash ovirt-vmbash_bkp
 ```
 
 Regenerate the Certificates.
 Run the following commands:
 
-```console
+```bash
 [root@mgmt-olvm01 pki]# engine-setup --offline
 [ INFO  ] Stage: Initializing
 [ INFO  ] Stage: Environment setup
@@ -443,7 +443,7 @@ Run the following commands:
           DWH database port                       : 5432
           DWH database host name validation       : False
           Configure Image I/O Proxy               : True
-          Configure VMConsole Proxy               : True
+          Configure VMbash Proxy               : True
 
           Please confirm installation settings (OK, Cancel) [OK]: OK
 [ INFO  ] Cleaning async tasks and compensations
@@ -454,7 +454,7 @@ Run the following commands:
 [ INFO  ] Stopping ovirt-fence-kdump-listener service
 [ INFO  ] Stopping dwh service
 [ INFO  ] Stopping Image I/O Proxy service
-[ INFO  ] Stopping vmconsole-proxy service
+[ INFO  ] Stopping vmbash-proxy service
 [ INFO  ] Stopping websocket-proxy service
 [ INFO  ] Stage: Misc configuration (early)
 [ INFO  ] Stage: Package installation
@@ -478,7 +478,7 @@ Run the following commands:
 [ INFO  ] Stage: Closing up
 [ INFO  ] Starting engine service
 [ INFO  ] Starting dwh service
-[ INFO  ] Restarting ovirt-vmconsole proxy service
+[ INFO  ] Restarting ovirt-vmbash proxy service
 
           --== SUMMARY ==--
 
@@ -510,7 +510,7 @@ The existing certificate subject is required when generating the replacement cer
 
 Run the following command:
 
-```console
+```bash
 openssl x509 \
   -in /etc/pki/ovirt-engine/certs/ovirt-provider-ovn.cer \
   -noout -subject
@@ -518,7 +518,7 @@ openssl x509 \
 
 Example output:
 
-```console
+```bash
 subject= /C=US/O=fra.techsolutions.de/CN=mgmt-olvm01.fra.techsolutions.de
 ```
 
@@ -530,7 +530,7 @@ Use the subject obtained in the previous step to generate new certificates for e
 
 Run the following commands:
 
-```console
+```bash
 /usr/share/ovirt-engine/bin/pki-enroll-pkcs12.sh \
   --name="ovirt-provider-ovn" \
   --password=mypass \
@@ -552,7 +552,7 @@ Run the following commands:
 
 Successful execution produces output similar to the following:
 
-```console
+```bash
 MAC verified OK
 Using configuration from openssl.conf
 Check that the request matches the signature
@@ -573,7 +573,7 @@ Restart the affected services to load the new certificates.
 
 Run the following commands:
 
-```console
+```bash
 systemctl restart ovirt-provider-ovn.service
 systemctl restart ovn-northd.service
 ```
@@ -587,14 +587,14 @@ Verify that the following certificates display the updated expiration dates:
   - `ovn-ndb`
   - `ovn-sdb`
 
-- **VMConsole Proxy**
-  - `vmconsole-proxy-host`
-  - `vmconsole-proxy-user`
-  - `vmconsole-proxy-helper`
+- **VMbash Proxy**
+  - `vmbash-proxy-host`
+  - `vmbash-proxy-user`
+  - `vmbash-proxy-helper`
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts status
 
     reports.cer                                         Jan 18 17:58:22 2031 GMT
@@ -602,15 +602,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                 		  Jun 14 07:47:58 2026 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmconsole-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmconsole-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
 ```
 
 .## Check and Renew the KVM Host Certificates
@@ -623,13 +623,13 @@ Use the **OlvmKvmCerts** utility to list the KVM hosts managed by the OLVM Engin
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts list-hosts
 ```
 
 Example output:
 
-```console
+```bash
  name     |              host              | cluster
 ----------+--------------------------------+---------
  kvm01    | kvm01.fra.techsolutions.de    | Default
@@ -642,13 +642,13 @@ Identify the fully qualified domain name (FQDN) of each KVM host for which you w
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts check-host kvm01.fra.techsolutions.de
 ```
 
 Example output:
 
-```console
+```bash
 ... Host: kvm01.fra.techsolutions.de
 Checking connection to kvm01.fra.techsolutions.de                     [PASS]
 /etc/pki/vdsm/certs/vdsmcert.pem                    Jun 24 12:08:16 2026 GMT
@@ -677,13 +677,13 @@ Repeat the certificate check for each remaining KVM host.
 
 For example, run the following command for `kvm02.fra.techsolutions.de`:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts check-host kvm02.fra.techsolutions.de
 ```
 
 Example output:
 
-```console
+```bash
 ... Host: kvm02.fra.techsolutions.de
 Checking connection to kvm02.fra.techsolutions.de                     [PASS]
 /etc/pki/vdsm/certs/vdsmcert.pem                    Jun 24 12:08:16 2026 GMT
@@ -754,7 +754,7 @@ Renew the certificates on each KVM host individually.
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts renew-host kvm01.fra.techsolutions.de
 ... Host: kvm01.fra.techsolutions.de
     Checking connection to kvm01.fra.techsolutions.de                 [PASS]
@@ -780,7 +780,7 @@ Repeat the procedure for the remaining KVM host.
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts renew-host kvm02.fra.techsolutions.de
 ... Host: kvm02.fra.techsolutions.de
     Checking connection to kvm02.fra.techsolutions.de                 [PASS]
@@ -808,7 +808,7 @@ After all Engine and KVM host certificates have been renewed, verify that the ce
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts status
 
     reports.cer                                         Jan 18 17:58:22 2031 GMT
@@ -816,15 +816,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                 		  Feb 13 19:48:41 2031 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmconsole-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmconsole-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
 ```
 
 **KVM Host kvm01.fra.techsolutions.de** 
@@ -833,27 +833,27 @@ Verify the certificates on each KVM host.
 
 Run the following command:
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts status kvm01.fra.techsolutions.de
     reports.cer                                         Jan 18 17:58:22 2031 GMT
     kvm01.fra.techsolutions.de.cer                      Feb 13 20:03:16 2031 GMT
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                      Feb 13 20:00:15 2031 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmconsole-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmconsole-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
 ```
 
 **KVM Host kvm02.fra.techsolutions.de**
 
-```console
+```bash
 [root@mgmt-olvm01 ~]# ./OlvmKvmCerts status kvm02.fra.techsolutions.de
 
     reports.cer                                         Jan 18 17:58:22 2031 GMT
@@ -861,15 +861,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                      Feb 13 20:00:15 2031 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmconsole-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmconsole-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
+    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
 ```
 
 ## Summary

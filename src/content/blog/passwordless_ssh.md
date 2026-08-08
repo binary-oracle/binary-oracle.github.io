@@ -37,7 +37,7 @@ Once the configuration is complete, each server can establish SSH connections to
 
 Before configuring SSH keys, verify that the connection requires password authentication.
 
-```console
+```bash
 [root@server-graz ~]# ssh server-wien
 root@server-wien's password:
 ```
@@ -46,7 +46,7 @@ root@server-wien's password:
 
 Generate an SSH key pair on **server-graz**. In this example, the private key is created without a passphrase.
 
-```console
+```bash
 [root@server-graz ~]# ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa):
@@ -74,7 +74,7 @@ The key's randomart image is:
 
 After the key pair has been created, verify that both files exist in the `~/.ssh` directory.
 
-```console
+```bash
 [root@server-graz ~]# ls -ltra /root/.ssh/
 total 24
 dr-xr-x---. 3 root root 4096 Oct 25 14:37 ..
@@ -92,7 +92,7 @@ drwx------. 2 root root 4096 Nov  2 12:44 .
 
 Copy the public key to **server-wien** using `ssh-copy-id`.
 
-```console
+```bash
 [root@server-graz ~]# ssh-copy-id root@server-wien
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
@@ -106,7 +106,7 @@ Now try logging into the machine, with:
 ```
 Verify that passwordless authentication is working by establishing an SSH connection.
 
-```console
+```bash
 [root@server-graz ~]# ssh server-wien
 Last login: Sun Nov  2 12:40:21 2025 from 192.168.56.1
 [root@server-wien ~]#
@@ -114,7 +114,7 @@ Last login: Sun Nov  2 12:40:21 2025 from 192.168.56.1
 
 Repeat the same procedure on **server-wien** to enable passwordless SSH access to **server-graz**.
 
-```console
+```bash
 [root@server-wien ~]# ssh key-gen
 ssh: Could not resolve hostname key-gen: Name or service not known
 
