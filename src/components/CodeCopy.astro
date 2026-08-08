@@ -1,0 +1,37 @@
+<script>
+  const copyText = async (text: string) => {
+    if (!navigator.clipboard) throw new Error("Clipboard unavailable");
+    await navigator.clipboard.writeText(text);
+  };
+
+  document.querySelectorAll<HTMLElement>(".content-prose pre, .exchange-section pre").forEach((pre) => {
+    if (pre.closest(".code-block")) return;
+    const code = pre.querySelector("code");
+    if (!code) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-block";
+    pre.before(wrapper);
+    wrapper.append(pre);
+
+    const button = document.createElement("button");
+    button.className = "code-copy-button";
+    button.type = "button";
+    button.textContent = "Copy";
+    button.setAttribute("aria-label", "Copy code");
+    button.setAttribute("aria-live", "polite");
+    wrapper.append(button);
+
+    button.addEventListener("click", async () => {
+      try {
+        await copyText(code.textContent ?? "");
+        button.textContent = "Copied";
+        button.dataset.state = "success";
+      } catch {
+        button.textContent = "Copy failed";
+        button.dataset.state = "error";
+      }
+      window.setTimeout(() => { button.textContent = "Copy"; button.dataset.state = ""; }, 1600);
+    });
+  });
+</script>

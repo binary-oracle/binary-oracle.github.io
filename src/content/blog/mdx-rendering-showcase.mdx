@@ -1,0 +1,86 @@
+---
+title: MDX Rendering Showcase
+description: A visual check of headings, paragraphs, lists, code blocks, tables, and JSX in LogFlow Theme.
+pubDate: 2026-03-14
+collection: LogFlow Theme
+collectionDescription: Design, implementation, and iteration notes for LogFlow Theme
+tags:
+  - MDX
+  - Markdown
+  - Styles
+---
+
+Body text uses the theme's main font stack, while code blocks use a dedicated monospace stack.
+
+export const InfoBadge = ({ text }) => (
+  <span
+    style={{
+      display: 'inline-block',
+      padding: '0.15rem 0.55rem',
+      borderRadius: 'var(--radius-ui)',
+      fontSize: 'var(--text-xs)',
+      background: 'rgba(99, 102, 241, 0.14)',
+      color: 'rgb(79, 70, 229)',
+    }}
+  >
+    {text}
+  </span>
+);
+
+# Level-one heading example
+
+This is a normal paragraph with inline code, `const answer = 42;`, plus an MDX JSX badge: <InfoBadge text="MDX + JSX" />.
+
+## Level-two heading example
+
+Here are unordered and ordered lists:
+
+- First unordered item
+- Second unordered item
+- Third unordered item
+
+1. First ordered item
+2. Second ordered item
+3. Third ordered item
+
+### Quotes and emphasis
+
+> This is a blockquote example for notes, cautions, or summary text.
+
+You can combine **bold text**, *italic text*, and [links](https://astro.build/).
+
+### Code-block example
+
+```ts
+export const PAGE_COPY = {
+  blog: {
+    title: 'Posts',
+    description: 'Browse all posts by date.',
+  },
+};
+```
+
+```astro
+<section class="demo">
+  <h2>Hello Astro</h2>
+  <p>Astro + Markdown + MDX</p>
+</section>
+```
+
+### Table example
+
+| Field | Type | Description |
+| --- | --- | --- |
+| title | string | Post title |
+| description | string | Post summary |
+| pubDate | date | Publication date |
+
+### HTML block example
+
+<div style="padding: 0.85rem 1rem; border: 1px solid rgba(125, 125, 125, 0.3); border-radius: var(--radius-ui);">
+  This is a native HTML block that can be used for custom presentation areas.
+</div>
+
+---
+
+Use this page to quickly verify the theme's main Markdown and MDX typography.

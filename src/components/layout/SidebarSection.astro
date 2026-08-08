@@ -1,0 +1,12 @@
+---
+interface Props { title: string; href?: string }
+const { title, href } = Astro.props;
+---
+
+<section class="sidebar-section">
+  <header class="sidebar-section-header">
+    <h2 class="sidebar-section-title">{href ? <a href={href}>{title}</a> : title}</h2>
+    <slot name="action" />
+  </header>
+  <slot />
+</section>

@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import CommentSection from "../components/CommentSection.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { collectionPath, estimateReadingMinutes, tagPath } from "../utils/content";
+import { withBase } from "../utils/withBase";
+import SiteLayout from "./SiteLayout.astro";
+
+type BlogPostData = CollectionEntry<"blog">["data"];
+interface Props extends BlogPostData { body?: string; enableComments?: boolean }
+const { title, description, pubDate, updatedDate, heroImage, collection, tags = [], body = "", enableComments = false } = Astro.props;
+---
+<SiteLayout title={title} description={description} image={heroImage} type="article">
+  <article class="post-article">
+    <header class="post-header">
+      <nav aria-label="Breadcrumb"><ol><li><a href={withBase("/blog/")}>Posts</a></li>{collection && <li><a href={withBase(collectionPath(collection))}>{collection}</a></li>}</ol></nav>
+      <h1>{title}</h1>
+      <p class="description">{description}</p>
+      <dl class="meta"><div><dt>Published</dt><dd><FormattedDate date={pubDate} /></dd></div>{updatedDate && <div><dt>Updated</dt><dd><FormattedDate date={updatedDate} /></dd></div>}<div><dt>Reading time</dt><dd>~{estimateReadingMinutes(body)} min read</dd></div></dl>
+      {tags.length > 0 && <ul class="tags" aria-label="Post tags">{tags.map((tag) => <li><a href={withBase(tagPath(tag))}>#{tag}</a></li>)}</ul>}
+    </header>
+    {heroImage && <div class="hero-image"><Image width={840} height={420} src={heroImage} alt={title} /></div>}
+    <div class="prose content-prose"><slot />{enableComments && <CommentSection />}</div>
+  </article>
+</SiteLayout>
+<style>
+  .post-header,.prose { width:var(--reading-max-width); max-width:100%; margin-right:auto; margin-left:auto; }
+  .post-header { margin-bottom:1.4rem; }
+  nav { margin-bottom:.55rem; color:var(--text-muted); font-size:var(--text-xs); } nav ol { display:flex; margin:0; padding:0; list-style:none; } nav li + li::before { margin:0 .4rem; content:"/"; } nav a { color:var(--text-muted); text-decoration:none; }
+  h1 { min-width:0; margin:0; font-size:var(--text-3xl); line-height:var(--line-height-tight); letter-spacing:0; overflow-wrap:anywhere; }
+  .description { margin:.45rem 0 0; color:var(--text-secondary); font-size:var(--text-sm); } .meta,.tags { display:flex; margin:.55rem 0 0; padding:0; flex-wrap:wrap; gap:.35rem .8rem; color:var(--text-muted); font-size:var(--text-xs); } .meta > div { display:flex; gap:.25rem; } .meta dt,.meta dd { margin:0; } .tags { margin-top:.35rem; list-style:none; } .tags a { text-decoration:none; }
+  .hero-image { margin-bottom:1.4rem; } .hero-image img { width:100%; }
+</style>

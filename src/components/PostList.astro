@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import { estimateReadingMinutes, tagPath } from "../utils/content";
+import { withBase } from "../utils/withBase";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+  showDescription?: boolean;
+  showReadingTime?: boolean;
+}
+
+const { posts, showDescription = true, showReadingTime = false } = Astro.props;
+---
+
+<ul class="post-list">
+  {
+    posts.map((post) => (
+      <li class="post-list-item">
+        <FormattedDate class="post-list-date" date={post.data.pubDate} short={true} />
+        <article class="post-list-body">
+          <h2 class="post-list-title"><a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a></h2>
+          {showDescription && <p>{post.data.description}</p>}
+          <footer class="post-list-meta">
+            <ul class="post-list-tags" aria-label="Post tags">
+              {(post.data.tags ?? []).map((tag) => (
+                <li><a href={withBase(tagPath(tag))}>#{tag}</a></li>
+              ))}
+            </ul>
+            {showReadingTime && <small class="post-list-reading-time">~{estimateReadingMinutes(post.body ?? "")} min read</small>}
+          </footer>
+        </article>
+      </li>
+    ))
+  }
+</ul>
