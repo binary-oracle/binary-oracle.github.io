@@ -54,7 +54,7 @@ Run the following command:
 
 Expected output:
 
-```text
+```console
 Usage: OlvmKvmCert [OPTION] <HOST|CLUSTER>
 
 status                    Display the status of all certificates on the Engine host
@@ -79,7 +79,7 @@ Run the following command:
 
 Example output:
 
-```text
+```console
 reports.cer                                          Mar  3 13:11:53 2026 GMT
 kvm01.fra.techsolutions.de.cer                       Jun 14 07:47:58 2026 GMT
 ovn-ndb.cer                                          Mar  3 13:11:54 2026 GMT
@@ -136,7 +136,7 @@ During the renewal process:
 
 Example output:
 
-```text
+```console
 [root@mgmt-olvm01 ~]# engine-setup --offline
 [ INFO  ] Stage: Initializing
 [ INFO  ] Stage: Environment setup
@@ -518,7 +518,7 @@ openssl x509 \
 
 Example output:
 
-```text
+```console
 subject= /C=US/O=fra.techsolutions.de/CN=mgmt-olvm01.fra.techsolutions.de
 ```
 
@@ -552,7 +552,7 @@ Run the following commands:
 
 Successful execution produces output similar to the following:
 
-```text
+```console
 MAC verified OK
 Using configuration from openssl.conf
 Check that the request matches the signature
@@ -648,7 +648,7 @@ Run the following command:
 
 Example output:
 
-```text
+```console
 ... Host: kvm01.fra.techsolutions.de
 Checking connection to kvm01.fra.techsolutions.de                     [PASS]
 /etc/pki/vdsm/certs/vdsmcert.pem                    Jun 24 12:08:16 2026 GMT
