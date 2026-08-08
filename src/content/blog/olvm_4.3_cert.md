@@ -725,8 +725,8 @@ However, previous manual certificate renewal procedures for OLVM commonly requir
 
 For production environments, Oracle recommends minimizing the impact of maintenance activities on running workloads. A conservative approach is to renew host certificates one host at a time by performing the following steps:
 
-1. Place the KVM host into **Maintenance** mode.
-2. Migrate all running virtual machines to another host in the cluster.
+1. Migrate all running virtual machines to another host in the cluster.
+2. Place the KVM host into **Maintenance** mode.
 3. Renew the host certificates.
 4. Verify that the host returns to the **Up** state.
 5. Exit **Maintenance** mode.
