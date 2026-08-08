@@ -1,7 +1,7 @@
 // Core site information used by the Header, SEO, RSS, sitemap, and footer.
 export const SITE_TITLE = "binary-oracle";
 export const SITE_DESCRIPTION = "Oracle database administration insights.";
-export const SITE_URL = "https://example.com";
+export const SITE_URL = "https://binary-oracle.github.io";
 export const COPYRIGHT_NAME = "binary-oracle";
 
 // Static page titles and summaries, also used for SEO descriptions.
