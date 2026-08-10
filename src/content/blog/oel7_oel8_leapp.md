@@ -8271,6 +8271,9 @@ The following output shows excerpts from the system console while the upgrade is
 ![Console](./screenshots/console5.png)
 ![Console](./screenshots/console6.png)
 ![Console](./screenshots/console7.png)
+![Console](./screenshots/console8.png)
+![Console](./screenshots/console9.png)
+
 
 ## Post-Upgrade Tasks
 

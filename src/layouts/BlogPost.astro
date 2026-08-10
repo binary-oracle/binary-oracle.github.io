@@ -32,3 +32,31 @@ const { title, description, pubDate, updatedDate, heroImage, collection, tags = 
   .description { margin:.45rem 0 0; color:var(--text-secondary); font-size:var(--text-sm); } .meta,.tags { display:flex; margin:.55rem 0 0; padding:0; flex-wrap:wrap; gap:.35rem .8rem; color:var(--text-muted); font-size:var(--text-xs); } .meta > div { display:flex; gap:.25rem; } .meta dt,.meta dd { margin:0; } .tags { margin-top:.35rem; list-style:none; } .tags a { text-decoration:none; }
   .hero-image { margin-bottom:1.4rem; } .hero-image img { width:100%; }
 </style>
+<script>
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof HTMLImageElement)) return;
+    if (!target.closest(".content-prose")) return;
+
+    const lightbox = document.createElement("div");
+    lightbox.className = "image-lightbox";
+
+    const image = document.createElement("img");
+    image.src = target.src;
+    image.alt = target.alt;
+
+    lightbox.appendChild(image);
+    document.body.appendChild(lightbox);
+
+    lightbox.addEventListener("click", () => {
+      lightbox.remove();
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      document.querySelector(".image-lightbox")?.remove();
+    }
+  });
+</script>

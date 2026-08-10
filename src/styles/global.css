@@ -56,10 +56,39 @@ a { color:var(--accent); text-underline-offset:.18em; }
 a:hover { text-decoration-thickness:2px; }
 :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 button,input,textarea { font:inherit; }
-img { display:block; max-width:100%; height:auto; border-radius:var(--radius-ui); }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-ui);
+}
+
 .content-prose img {
   display: block;
   margin: 1.5rem auto;
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: zoom-out;
+}
+
+.image-lightbox img {
+  display: block;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-ui);
 }
 hr { display:none; }
 code { padding:.12em .35em; border:0; border-radius:var(--radius-ui); background:var(--background-elevated); color:var(--text-primary); font-family:var(--font-family-mono); font-size:inherit; font-weight:var(--weight-regular); font-variant-ligatures:none; }
