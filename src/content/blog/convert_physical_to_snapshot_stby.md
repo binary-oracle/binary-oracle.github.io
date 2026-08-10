@@ -12,8 +12,6 @@ tags:
   - High Availability
 ---
 
-# Convert a Physical Standby Database to a Snapshot Standby Using DGMGRL
-
 This guide demonstrates how to convert an Oracle Data Guard **Physical Standby** database to a **Snapshot Standby** database and later convert it back to a physical standby using **DGMGRL**.
 
 A snapshot standby database allows temporary read-write access to a physical standby database. This can be useful for testing, patch validation, reporting, or other activities that require a writable copy of the production database.

@@ -11,8 +11,6 @@ tags:
   - System Administration
 ---
 
-# In-Place Upgrade from Oracle Linux 7 to Oracle Linux 8 Using Leapp
-
 Oracle Linux provides the **Leapp** utility for performing in-place upgrades between supported major Oracle Linux releases.
 
 An in-place upgrade allows an existing Oracle Linux installation to be upgraded while retaining much of the existing system configuration, applications, and data. This can reduce the amount of work required compared with deploying a new operating system and migrating workloads manually.

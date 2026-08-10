@@ -10,8 +10,6 @@ tags:
   - Oracle Clusterware
 ---
 
-# Rename an Oracle Database Using the NID Utility
-
 Renaming an Oracle Database might be required when moving environments, restructuring systems, or aligning database naming conventions.
 
 This guide demonstrates how to rename an **Oracle Database 19c** database using the **DBNEWID (NID)** utility. In this example, the database name is changed while the existing **DBID** is retained.

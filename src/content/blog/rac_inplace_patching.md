@@ -13,8 +13,6 @@ tags:
   - Patching
 ---
 
-# In-Place Patching of Oracle RAC 19c Using OPatchAuto
-
 Keeping an Oracle RAC environment up to date is important for stability, security, and supportability. This guide demonstrates how to perform an **in-place patch update on a two-node Oracle RAC 19c environment**.
 
 The procedure begins by identifying the currently installed **Oracle Database** and **Grid Infrastructure** patch levels on both nodes. The required **19.28 Release Update** is then prepared and applied to each RAC node.

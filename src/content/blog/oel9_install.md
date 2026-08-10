@@ -8,8 +8,6 @@ tags:
   - Linux
 ---
 
-# Install Oracle Linux 9
-
 This guide demonstrates how to install **Oracle Linux 9.6** and configure the system with the requirements for a subsequent **Oracle Grid Infrastructure 19c** and **Oracle Database 19c** installation.
 
 The installation and configuration of Oracle Grid Infrastructure and Oracle Database will be covered separately.
