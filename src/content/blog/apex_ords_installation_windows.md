@@ -14,8 +14,6 @@ tags:
   - Windows Server
 ---
 
-# Installing Oracle APEX, ORDS, and Apache Tomcat with SSL on Oracle Database 19c and Windows Server
-
 ## Overview
 
 This guide describes how to install and configure **Oracle APEX**, **Oracle REST Data Services (ORDS)**, and **Apache Tomcat** on an existing **Oracle Database 19c** environment running on **Microsoft Windows Server**.
