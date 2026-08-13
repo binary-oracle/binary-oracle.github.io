@@ -611,7 +611,7 @@ Create a dedicated directory for the ORDS configuration:
 C:\Users\oracle\Desktop>mkdir C:\oracle\ords-config
 ```
 
-Keep the ORDS configuration directory separate from the ORDS product installation directory. :contentReference[oaicite:1]{index=1}
+Keep the ORDS configuration directory separate from the ORDS product installation directory.
 
 The directory layout used in this environment is:
 
@@ -628,11 +628,8 @@ Set the environment variables required for the ORDS and Apache Tomcat installati
 
 ```cmd
 C:\Users\oracle\Desktop>set ORDS_HOME=C:\oracle\ords_26.2.2
-
 C:\Users\oracle\Desktop>set TOMCAT_HOME=C:\oracle\tomcat_9.0.120
-
 C:\Users\oracle\Desktop>set ORDS_CONFIG=C:\oracle\ords-config
-
 C:\Users\oracle\Desktop>set PATH=%ORDS_HOME%\bin;%TOMCAT_HOME%\bin;%PATH%
 ```
 
@@ -655,7 +652,7 @@ Configuration:
 Oracle REST Data Services 26.2.2.r2041619
 ```
 
-The output confirms that ORDS 26.2.2 is installed and that the configuration directory is:
+The output confirms the version of the ORDS (26.2.2) and that the configuration directory is:
 
 ```text
 C:\oracle\ords-config
@@ -1170,7 +1167,7 @@ Therefore, the APEX static resources must be available to clients through the `/
 Create an `i` directory under the Tomcat `webapps` directory:
 
 ```text
-C:\oracle\tomcat_9.0.120\webapps\i
+C:\Users\oracle> mkdir C:\oracle\tomcat_9.0.120\webapps\i
 ```
 
 Copy the contents of the APEX `images` directory to the Tomcat `i` directory:
@@ -1278,7 +1275,6 @@ A useful validation is the APEX version file:
 ```text
 http://localhost:8080/i/apex_version.txt
 ```
-
 
 ![APEX](./screenshots/apex_ver.png)
 
@@ -1722,7 +1718,10 @@ C:\Users\oracle>ping apex.lab.local
 The hostname should resolve to:
 
 ```text
-127.0.0.1
+Pinging apex.lab.local [127.0.0.1] with 32 bytes of data:
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
 ```
 
 ## Restarting Apache Tomcat
@@ -1769,14 +1768,6 @@ Verify that Tomcat is listening on port `8443`:
 C:\Users\oracle>netstat -ano | findstr :8443
 ```
 
-The output should show the port in the `LISTENING` state.
-
-For example:
-
-```text
-TCP    0.0.0.0:8443    0.0.0.0:0    LISTENING
-```
-
 ### Verify HTTPS Connectivity
 
 Open a browser and access ORDS using the HTTPS endpoint:
@@ -1805,11 +1796,7 @@ Verify that the certificate contains:
 CN=apex.lab.local
 ```
 
-Verify that the Subject Alternative Name extension contains:
-
-```text
-DNS: apex.lab.local
-```
+![HTTPS CET](./screenshots/cert.png)
 
 The certificate should correspond to the certificate stored in:
 
@@ -1851,17 +1838,6 @@ Confirm the following:
 - Subject Alternative Name (SAN)
 - Certificate chain
 - Hostname validation
-
-### Verify Oracle APEX
-
-Access Oracle APEX through the HTTPS endpoint.
-
-Verify that:
-
-- The APEX login page is displayed.
-- Static resources are loaded correctly.
-- No certificate warning is displayed.
-- The required APEX workspace is accessible.
 
 ## Final Verification
 
