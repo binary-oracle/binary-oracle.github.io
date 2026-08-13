@@ -8,8 +8,6 @@ tags:
   - Oracle Wallet
   - Secure External Password Store
   - SEPS
-  - SQL*Plus
-  - SYSDBA
   - Security
   - Database Administration
 ---
