@@ -77,7 +77,7 @@ After downloading the archive, extract the APEX software to the selected install
 For example:
 
 ```text
-C:\oracle\apache_9.0.120
+C:\oracle\apex_26.1
 ```
 
 ### Download Oracle REST Data Services
