@@ -66,44 +66,6 @@ Verify the following:
 - The required network ports are available.
 - An SSL/TLS certificate is available for the HTTPS configuration.
 
-## Downloading the Required Software
-
-### Download Oracle APEX
-
-Download the required Oracle APEX release from the official Oracle website.
-
-After downloading the archive, extract the APEX software to the selected installation directory.
-
-For example:
-
-```text
-C:\oracle\apex_26.1
-```
-
-### Download Oracle REST Data Services
-
-Download the required Oracle REST Data Services (ORDS) release from the official Oracle website.
-
-Extract the ORDS software to the selected installation directory.
-
-For example:
-
-```text
-C:\oracle\ords_26.2.2
-```
-
-### Download Apache Tomcat
-
-Download a supported Apache Tomcat release from the Apache Tomcat project.
-
-Extract or install Apache Tomcat in the selected installation directory.
-
-For example:
-
-```text
-C:\oracle\tomcat_9.0.120
-```
-
 ### Verify Java
 
 Verify that the required Java version is installed and available:
