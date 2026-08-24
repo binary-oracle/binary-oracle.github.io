@@ -10,8 +10,6 @@ tags:
   - Windows Server 2022
 ---
 
-# From OS to Oracle: Install Oracle Grid Infrastructure and Database 19c on Windows Server 2022
-
 Setting up a reliable Oracle Database environment starts with a properly prepared operating system and storage configuration.
 
 This guide demonstrates the complete process of installing **Microsoft Windows Server 2022**, configuring **Standalone Oracle Grid Infrastructure 19c with Oracle ASM**, and creating an **Oracle Database 19c**.

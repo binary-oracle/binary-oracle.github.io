@@ -85,15 +85,15 @@ kvm01.fra.techsolutions.de.cer                       Jun 14 07:47:58 2026 GMT
 ovn-ndb.cer                                          Mar  3 13:11:54 2026 GMT
 jboss.cer                                            Mar  3 13:11:53 2026 GMT
 ovirt-provider-ovn.cer                               Mar  3 13:11:54 2026 GMT
-vmbash-proxy-host.cer                             Mar  3 13:12:03 2026 GMT
+vmconsole-proxy-host.cer                             Mar  3 13:12:03 2026 GMT
 websocket-proxy.cer                                  Mar  3 13:11:53 2026 GMT
 kvm02.fra.techsolutions.de.cer                       Jun 24 12:08:16 2026 GMT
 imageio-proxy.cer                                    Mar  3 13:11:54 2026 GMT
 engine.cer                                           Mar  3 13:11:53 2026 GMT
 apache.cer                                           Mar  3 13:11:53 2026 GMT
 ovn-sdb.cer                                          Mar  3 13:11:54 2026 GMT
-vmbash-proxy-user.cer                             Mar  3 13:12:03 2026 GMT
-vmbash-proxy-helper.cer                           Mar  3 13:12:03 2026 GMT
+vmconsole-proxy-user.cer                             Mar  3 13:12:03 2026 GMT
+vmconsole-proxy-helper.cer                           Mar  3 13:12:03 2026 GMT
 ```
 
 Review the certificate expiration dates before proceeding with certificate renewal.
@@ -235,7 +235,7 @@ Example output:
           DWH database port                       : 5432
           DWH database host name validation       : False
           Configure Image I/O Proxy               : True
-          Configure VMbash Proxy               : True
+          Configure VMConsole Proxy               : True
 
           Please confirm installation settings (OK, Cancel) [OK]: OK
 [ INFO  ] Cleaning async tasks and compensations
@@ -246,7 +246,7 @@ Example output:
 [ INFO  ] Stopping ovirt-fence-kdump-listener service
 [ INFO  ] Stopping dwh service
 [ INFO  ] Stopping Image I/O Proxy service
-[ INFO  ] Stopping vmbash-proxy service
+[ INFO  ] Stopping vmconsole-proxy service
 [ INFO  ] Stopping websocket-proxy service
 [ INFO  ] Stage: Misc configuration (early)
 [ INFO  ] Stage: Package installation
@@ -276,7 +276,7 @@ Example output:
 [ INFO  ] Stage: Closing up
 [ INFO  ] Starting engine service
 [ INFO  ] Starting dwh service
-[ INFO  ] Restarting ovirt-vmbash proxy service
+[ INFO  ] Restarting ovirt-vmconsole proxy service
 
           --== SUMMARY ==--
 
@@ -312,36 +312,36 @@ Run the following command:
     ovn-ndb.cer                                         Mar  3 13:11:54 2026 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Mar  3 13:11:54 2026 GMT
-    vmbash-proxy-host.cer                            Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-host.cer                            Mar  3 13:12:03 2026 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer 	                    Jun 24 12:08:16 2026 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Mar  3 13:11:54 2026 GMT
-    vmbash-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
-    vmbash-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
 ```
 
 Review the output and confirm that the certificate expiration dates reflect the new validity period.
 
 > Depending on the OLVM release, not all certificates are renewed automatically. This behavior was addressed in **OLVM 4.4.10.7-1.0.24** and later releases.
 
-## Renew the VMbash Certificates
+## Renew the VMconsole Certificates
 
-This procedure regenerates the VMbash Proxy certificates on the OLVM Engine.
+This procedure regenerates the **VMconsole Proxy certificates** on the OLVM Engine.
 
 > For Hosted Engine deployments, enable **Global Maintenance Mode** before performing this procedure. Disable Global Maintenance Mode after the renewal has completed successfully.
 
-Back up the existing VMbash certificate files before regenerating them.
+Back up the existing VMconsole certificate files before regenerating them.
 
 Run the following commands:
 ```bash
 [root@mgmt-olvm01 ~]# cd /etc/pki/ovirt-engine/keys
-[root@mgmt-olvm01 keys]# mv vmbash-proxy-host.p12 vmbash-proxy-host.p12.bckp
-[root@mgmt-olvm01 keys]# mv vmbash-proxy-helper.key.nopass vmbash-proxy-helper.key.nopass.bckp
+[root@mgmt-olvm01 keys]# mv vmconsole-proxy-host.p12 vmconsole-proxy-host.p12.bckp
+[root@mgmt-olvm01 keys]# mv vmconsole-proxy-helper.key.nopass vmconsole-proxy-helper.key.nopass.bckp
 [root@mgmt-olvm01 keys]# cd /etc/pki/
-[root@mgmt-olvm01 pki]# mv ovirt-vmbash ovirt-vmbash_bkp
+[root@mgmt-olvm01 pki]# mv ovirt-vmconsole ovirt-vmconsole_bkp
 ```
 
 Regenerate the Certificates.
@@ -443,7 +443,7 @@ Run the following commands:
           DWH database port                       : 5432
           DWH database host name validation       : False
           Configure Image I/O Proxy               : True
-          Configure VMbash Proxy               : True
+          Configure VMConsole Proxy               : True
 
           Please confirm installation settings (OK, Cancel) [OK]: OK
 [ INFO  ] Cleaning async tasks and compensations
@@ -454,7 +454,7 @@ Run the following commands:
 [ INFO  ] Stopping ovirt-fence-kdump-listener service
 [ INFO  ] Stopping dwh service
 [ INFO  ] Stopping Image I/O Proxy service
-[ INFO  ] Stopping vmbash-proxy service
+[ INFO  ] Stopping vmconsole-proxy service
 [ INFO  ] Stopping websocket-proxy service
 [ INFO  ] Stage: Misc configuration (early)
 [ INFO  ] Stage: Package installation
@@ -478,7 +478,7 @@ Run the following commands:
 [ INFO  ] Stage: Closing up
 [ INFO  ] Starting engine service
 [ INFO  ] Starting dwh service
-[ INFO  ] Restarting ovirt-vmbash proxy service
+[ INFO  ] Restarting ovirt-vmconsole proxy service
 
           --== SUMMARY ==--
 
@@ -587,10 +587,10 @@ Verify that the following certificates display the updated expiration dates:
   - `ovn-ndb`
   - `ovn-sdb`
 
-- **VMbash Proxy**
-  - `vmbash-proxy-host`
-  - `vmbash-proxy-user`
-  - `vmbash-proxy-helper`
+- **VMConsole Proxy**
+  - `vmconsole-proxy-host`
+  - `vmconsole-proxy-user`
+  - `vmconsole-proxy-helper`
 
 Run the following command:
 
@@ -602,15 +602,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                 		  Jun 14 07:47:58 2026 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmconsole-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
 ```
 
 .## Check and Renew the KVM Host Certificates
@@ -816,15 +816,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                 		  Feb 13 19:48:41 2031 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmconsole-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
 ```
 
 **KVM Host kvm01.fra.techsolutions.de** 
@@ -840,15 +840,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                      Feb 13 20:00:15 2031 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmconsole-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
 ```
 
 **KVM Host kvm02.fra.techsolutions.de**
@@ -861,15 +861,15 @@ Run the following command:
     ovn-ndb.cer                                         Jan 18 19:58:53 2031 GMT
     jboss.cer                                           Jan 18 17:58:21 2031 GMT
     ovirt-provider-ovn.cer                              Jan 18 19:59:47 2031 GMT
-    vmbash-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
+    vmconsole-proxy-host.cer                            Jan 18 19:31:58 2031 GMT
     websocket-proxy.cer                                 Jan 18 17:58:22 2031 GMT
     kvm02.fra.techsolutions.de.cer                      Feb 13 20:00:15 2031 GMT
     imageio-proxy.cer                                   Jan 18 17:58:22 2031 GMT
     engine.cer                                          Jan 18 17:58:21 2031 GMT
     apache.cer                                          Jan 18 17:58:22 2031 GMT
     ovn-sdb.cer                                         Jan 18 19:58:07 2031 GMT
-    vmbash-proxy-user.cer                            Jan 18 19:31:58 2031 GMT
-    vmbash-proxy-helper.cer                          Jan 18 19:21:27 2031 GMT
+    vmconsole-proxy-user.cer                            Mar  3 13:12:03 2026 GMT
+    vmconsole-proxy-helper.cer                          Mar  3 13:12:03 2026 GMT
 ```
 
 ## Summary
