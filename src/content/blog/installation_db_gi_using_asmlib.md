@@ -1,14 +1,14 @@
 ---
-title: "Installing Oracle Database 19c and Grid Infrastructure with ASMLIB v3 and the Latest Release Update (19.32)"
-description: "Step-by-step guide to installing Oracle Grid Infrastructure 19c and Oracle Database 19c on Linux using Oracle ASMLIB v3, including patching both Oracle homes to the latest available 19c Release Update (19.32)."
+title: "Installing Oracle Database 19c and Grid Infrastructure with ASMLib v3 and the Latest Release Update (19.32)"
+description: "Step-by-step guide to installing Oracle Grid Infrastructure 19c and Oracle Database 19c on Linux using Oracle ASMLib v3, including patching both Oracle homes to the latest available 19c Release Update (19.32)."
 pubDate: 2026-10-03
 tags:
   - Oracle
   - Oracle Database 19c
   - Oracle Grid Infrastructure 19c
   - Oracle ASM
-  - Oracle ASMLIB
-  - ASMLIB v3
+  - Oracle ASMLib
+  - ASMLib v3
   - Release Update
   - Patching
   - Oracle Linux
@@ -31,7 +31,7 @@ The following components should be available before beginning the installation:
 | Network | At least one configured network interface |
 | SAN Storage | Block devices/LUNs presented to the server for Oracle ASM |
 | ASM Storage | Dedicated block devices for ASM disk groups |
-| ASMLIB | Oracle ASMLIB v3 |
+| ASMLib | Oracle ASMLib v3 |
 
 ### Memory and Swap
 
@@ -48,29 +48,29 @@ For example:
 | 32 GB | 16 GB |
 | 64 GB | 16 GB |
 
-### Oracle ASMLIB v3 Prerequisites
+### Oracle ASMLib v3 Prerequisites
 
-Before installing Oracle ASMLIB v3, verify that the operating system, kernel, Oracle Database software, and storage configuration meet the required prerequisites.
+Before installing Oracle ASMLib v3, verify that the operating system, kernel, Oracle Database software, and storage configuration meet the required prerequisites.
 
 | Component | Requirement |
 | --- | --- |
 | Operating System | Oracle Linux 8 or later |
-| Oracle ASMLIB | `oracleasmlib-3.0.0` or later |
-| ASMLIB Support Tools | `oracleasm-support-3.0.0` or later |
+| Oracle ASMLib | `oracleASMLib-3.0.0` or later |
+| ASMLib Support Tools | `oracleasm-support-3.0.0` or later |
 | Oracle Database 19c | **RU 19.21 with the required patch, or later** |
-| Kernel | UEK R7 or later does not require a separate ASMLIB driver |
+| Kernel | UEK R7 or later does not require a separate ASMLib driver |
 | Storage | Block devices presented and visible to the operating system |
-| Multipathing | Device Mapper Multipath configured before ASMLIB when SAN multipathing is used |
+| Multipathing | Device Mapper Multipath configured before ASMLib when SAN multipathing is used |
 
 > **Important**
 >
-> Oracle Database 19c support for Oracle ASMLIB requires **Oracle Database 19c Release Update 19.21 with the required patch, or later**. This guide patches Oracle Grid Infrastructure and Oracle Database to the latest available 19c Release Update.
+> Oracle Database 19c support for Oracle ASMLib requires **Oracle Database 19c Release Update 19.21 with the required patch, or later**. This guide patches Oracle Grid Infrastructure and Oracle Database to the latest available 19c Release Update.
 
-All Oracle ASMLIB installations require the `oracleasmlib` and `oracleasm-support` packages. The `oracleasm-support` package is available from the [Unbreakable Linux Network](https://linux.oracle.com/) (ULN) or the [Oracle Linux Yum Server](https://yum.oracle.com/).
+All Oracle ASMLib installations require the `oracleASMLib` and `oracleasm-support` packages. The `oracleasm-support` package is available from the [Unbreakable Linux Network](https://linux.oracle.com/) (ULN) or the [Oracle Linux Yum Server](https://yum.oracle.com/).
 
-The ASM block devices must be presented and visible to the operating system before they are configured with ASMLIB. When SAN storage uses multiple paths, configure and verify Device Mapper Multipath before creating ASMLIB disk labels.
+The ASM block devices must be presented and visible to the operating system before they are configured with ASMLib. When SAN storage uses multiple paths, configure and verify Device Mapper Multipath before creating ASMLib disk labels.
 
-For additional information, see [Oracle ASMLIB](https://www.oracle.com/linux/technologies/asmlib/).
+For additional information, see [Oracle ASMLib](https://www.oracle.com/linux/technologies/ASMLib/).
 
 ## Required Software
 
@@ -80,8 +80,8 @@ For additional information, see [Oracle ASMLIB](https://www.oracle.com/linux/tec
 | Oracle Database 19c (19.3) | `LINUX.X64_193000_db_home.zip` |
 | OJVM + GI Patch (19.32) | `p39618711_190000_Linux-x86-64.zip` |
 | OPatch | **Patch 6880880** — `p6880880_190000_Linux-x86-64.zip` |
-| Oracle ASMLIB v3 | `oracleasmlib-3.1.3-1.el9.x86_64.rpm` |
-| Oracle ASMLIB Support Tools | `oracleasm-support` |
+| Oracle ASMLib v3 | `oracleASMLib-3.1.3-1.el9.x86_64.rpm` |
+| Oracle ASMLib Support Tools | `oracleasm-support` |
 
 > **Note**
 >
@@ -246,9 +246,9 @@ oracle@192.168.56.30's password:
 LINUX.X64_193000_db_home.zip                        100% 2918MB 459.8MB/s   00:06    
 LINUX.X64_193000_grid_home.zip                      100% 2755MB 314.6MB/s   00:08
 
-honey7@fedora:~/Downloads$ scp oracleasmlib-3.1.3-1.el9.x86_64.rpm oracle@192.168.56.30:/u01/staging/software
+honey7@fedora:~/Downloads$ scp oracleASMLib-3.1.3-1.el9.x86_64.rpm oracle@192.168.56.30:/u01/staging/software
 oracle@192.168.56.30's password: 
-oracleasmlib-3.1.3-1.el9.x86_64.rpm                 100%   53KB  41.6MB/s   00:00   
+oracleASMLib-3.1.3-1.el9.x86_64.rpm                 100%   53KB  41.6MB/s   00:00   
 ```
 
 ```bash
@@ -265,7 +265,7 @@ After the transfer completes, connect to the server as `oracle` and verify the f
 total 5.6G
 -rw-r--r--. 1 oracle oinstall 2.9G Oct  3 13:04 LINUX.X64_193000_db_home.zip
 -rw-r--r--. 1 oracle oinstall 2.7G Oct  3 13:05 LINUX.X64_193000_grid_home.zip
--rw-r--r--. 1 oracle oinstall  54K Oct  3 13:22 oracleasmlib-3.1.3-1.el9.x86_64.rpm
+-rw-r--r--. 1 oracle oinstall  54K Oct  3 13:22 oracleASMLib-3.1.3-1.el9.x86_64.rpm
 
 [oracle@binary ~]$ ls -lh /u01/staging/patches
 total 3.0G
@@ -273,13 +273,13 @@ total 3.0G
 -rw-r--r--. 1 oracle oinstall 131M Oct  3 13:07 p6880880_190000_Linux-x86-64.zip
 ```
 
-The staging area should contain the required installation media and patches before proceeding with the Oracle ASMLIB and Oracle Grid Infrastructure configuration.
+The staging area should contain the required installation media and patches before proceeding with the Oracle ASMLib and Oracle Grid Infrastructure configuration.
 
 ## Configure Oracle ASM Storage
 
 ### Identify the ASM Disks
 
-Before configuring Oracle ASMLIB, identify the block devices that will be used by Oracle ASM and verify that they are not currently in use.
+Before configuring Oracle ASMLib, identify the block devices that will be used by Oracle ASM and verify that they are not currently in use.
 
 List the available block devices:
 
@@ -357,20 +357,20 @@ The ASM candidate devices are now:
 /dev/sdc1  -> RECO
 ```
 
-Do not create filesystems on these partitions. They will be configured as Oracle ASM disks using Oracle ASMLIB v3 in the next step.
+Do not create filesystems on these partitions. They will be configured as Oracle ASM disks using Oracle ASMLib v3 in the next step.
 
-### Install Oracle ASMLIB v3.1
+### Install Oracle ASMLib v3.1
 
-Oracle ASMLIB consists of two required packages:
+Oracle ASMLib consists of two required packages:
 
-- `oracleasm-support` — provides the ASMLIB administration utilities and service.
-- `oracleasmlib` — provides the Oracle ASMLIB userspace library.
+- `oracleasm-support` — provides the ASMLib administration utilities and service.
+- `oracleASMLib` — provides the Oracle ASMLib userspace library.
 
-On Oracle Linux 9, the `oracleasm-support` package is available from the Oracle Linux Addons repository. The `oracleasmlib` package can be downloaded separately and installed as an RPM.
+On Oracle Linux 9, the `oracleasm-support` package is available from the Oracle Linux Addons repository. The `oracleASMLib` package can be downloaded separately and installed as an RPM.
 
 > **Note**
 >
-> When using UEK R7 or later, a separate ASMLIB kernel driver is not required.
+> When using UEK R7 or later, a separate ASMLib kernel driver is not required.
 
 #### Enable the Oracle Linux Addons Repository
 
@@ -402,7 +402,7 @@ Available Packages
 oracleasm-support.x86_64    3.1.1-6.el9    ol9_addons
 ```
 
-#### Install Oracle ASMLIB Support Tools
+#### Install Oracle ASMLib Support Tools
 
 Install the `oracleasm-support` package:
 
@@ -418,9 +418,9 @@ oracleasm-support-3.1.1-6.el9.x86_64
 
 The installation also enables the `oracleasm.service` systemd service.
 
-#### Install the Oracle ASMLIB Library
+#### Install the Oracle ASMLib Library
 
-The Oracle ASMLIB v3 library RPM was downloaded earlier and transferred to `/u01/staging/software`.
+The Oracle ASMLib v3 library RPM was downloaded earlier and transferred to `/u01/staging/software`.
 
 Change to the software staging directory:
 
@@ -428,33 +428,33 @@ Change to the software staging directory:
 [root@binary ~]# cd /u01/staging/software
 ```
 
-Install the Oracle ASMLIB v3.1 library:
+Install the Oracle ASMLib v3.1 library:
 
 ```bash
-[root@binary software]# dnf install -y oracleasmlib-3.1.3-1.el9.x86_64.rpm
+[root@binary software]# dnf install -y oracleASMLib-3.1.3-1.el9.x86_64.rpm
 ```
 
 For this installation, the following version is installed:
 
 ```text
-oracleasmlib-3.1.3-1.el9.x86_64
+oracleASMLib-3.1.3-1.el9.x86_64
 ```
 
 #### Verify the Installation
 
-Verify that both required ASMLIB packages are installed:
+Verify that both required ASMLib packages are installed:
 
 ```bash
-[root@binary ~]# rpm -q oracleasm-support oracleasmlib
+[root@binary ~]# rpm -q oracleasm-support oracleASMLib
 oracleasm-support-3.1.1-6.el9.x86_64
-oracleasmlib-3.1.3-1.el9.x86_64
+oracleASMLib-3.1.3-1.el9.x86_64
 ```
 
-At this point, the Oracle ASMLIB v3.1 software is installed and ready to be configured.
+At this point, the Oracle ASMLib v3.1 software is installed and ready to be configured.
 
-### Configure Oracle ASMLIB v3.1
+### Configure Oracle ASMLib v3.1
 
-After installing the required ASMLIB packages, initialize and configure the Oracle ASM system service.
+After installing the required ASMLib packages, initialize and configure the Oracle ASM system service.
 
 Start and enable the `oracleasm` service:
 
@@ -463,7 +463,7 @@ Start and enable the `oracleasm` service:
 [root@binary ~]# systemctl enable oracleasm
 ```
 
-Initialize Oracle ASMLIB:
+Initialize Oracle ASMLib:
 
 ```bash
 [root@binary ~]# oracleasm init
@@ -475,7 +475,7 @@ Scanning system for ASM disks...
 Disk scan successful
 ```
 
-On UEK8, a separate ASMLIB kernel driver filesystem is not required.
+On UEK8, a separate ASMLib kernel driver filesystem is not required.
 
 Configure the Oracle ASM system service:
 
@@ -513,7 +513,7 @@ The resulting configuration uses:
 Checking if the oracleasm kernel module is loaded: no (not required with UEK8)
 Checking if /dev/oracleasm is mounted: no (not required with UEK8)
 Checking which I/O Interface is in use: io_uring (KABI_V3)
-Checking if ASMLIB can be loaded: yes
+Checking if ASMLib can be loaded: yes
 Checking if io_uring is enabled: yes
 Checking if io_uring is accessible to the configured DB user: yes
 Checking if io_uring supports integrity passthrough: yes
@@ -523,7 +523,7 @@ Checking if ASM I/O filter is set up: yes
 
 ### ASM Disk Labeling
 
-Label the previously created disk partitions with Oracle ASMLIB to prepare them for use with Oracle ASM.
+Label the previously created disk partitions with Oracle ASMLib to prepare them for use with Oracle ASM.
 
 Create the `DATA01` ASM disk using `/dev/sdb1`:
 
@@ -541,7 +541,7 @@ Writing disk header: done
 Instantiating disk: done
 ```
 
-List the available ASMLIB disks:
+List the available ASMLib disks:
 
 ```bash
 [root@binary ~]# oracleasm listdisks
@@ -551,7 +551,7 @@ RECO01
 
 The ASM disks are now labeled as follows:
 
-| ASMLIB Label | Device | Size | Intended Disk Group |
+| ASMLib Label | Device | Size | Intended Disk Group |
 | --- | --- | ---: | --- |
 | `DATA01` | `/dev/sdb1` | 100 GB | `DATA` |
 | `RECO01` | `/dev/sdc1` | 50 GB | `RECO` |
@@ -565,11 +565,11 @@ Disk "DATA01" is a valid ASM disk
 Disk "RECO01" is a valid ASM disk
 ```
 
-The ASMLIB disks are now ready to be selected during the Oracle Grid Infrastructure installation.
+The ASMLib disks are now ready to be selected during the Oracle Grid Infrastructure installation.
 
 ## Grid Infrastructure Installation and Configuration
 
-With the operating system, ASM storage, and Oracle ASMLIB configuration complete, proceed with the installation and patching of Oracle Grid Infrastructure 19c.
+With the operating system, ASM storage, and Oracle ASMLib configuration complete, proceed with the installation and patching of Oracle Grid Infrastructure 19c.
 
 Unless otherwise specified, perform the following steps as the `oracle` operating system user.
 
@@ -827,7 +827,7 @@ Return to the **same terminal in the VNC session** as the `oracle` user and star
 
 ![GI](./screenshots/gis1.png)
 
-On the **Create ASM Disk Group** screen, change the ASM disk discovery path from the default device path to the Oracle ASMLIB discovery string:
+On the **Create ASM Disk Group** screen, change the ASM disk discovery path from the default device path to the Oracle ASMLib discovery string:
 
 ```text
 ORCL:*
@@ -1302,14 +1302,14 @@ Database instance: PROD
 
 ## Summary
 
-Oracle Database 19c and Oracle Grid Infrastructure 19c are now installed, patched, and configured with Oracle ASMLIB v3.
+Oracle Database 19c and Oracle Grid Infrastructure 19c are now installed, patched, and configured with Oracle ASMLib v3.
 
 The completed environment includes:
 
 - Oracle Grid Infrastructure 19c patched to the selected Release Update
 - Oracle Restart configured and operational
-- Oracle ASMLIB v3 configured with `io_uring` on UEK8
-- `DATA` and `RECO` ASM disk groups using ASMLIB-labeled storage
+- Oracle ASMLib v3 configured with `io_uring` on UEK8
+- `DATA` and `RECO` ASM disk groups using ASMLib-labeled storage
 - Oracle Database 19c patched with the Database RU, OCW RU, and OJVM RU
 - Oracle Database registered with Oracle Restart and using ASM storage
 - Database connectivity and instance status successfully verified
