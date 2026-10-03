@@ -116,7 +116,7 @@ Verify the configuration:
 
 Update all installed packages to the latest versions available from the configured repositories:
 
-```bash"
+```bash
 [root@binary ~]# dnf update -y
 ```
 
@@ -124,7 +124,7 @@ Update all installed packages to the latest versions available from the configur
 
 Install the Oracle Database 19c preinstallation RPM together with the additional system administration utilities used in this guide:
 
-```bash"
+```bash
 [root@binary ~]# dnf install -y oracle-database-preinstall-19c tigervnc-server wget bind-utils xterm tmux git rsync iotop strace mlocate nfs-utils perl-core lynx
 ```
 
@@ -171,7 +171,7 @@ Set the ownership and permissions for the `/u01` directory structure:
 
 The resulting directory structure is:
 
-```text id="cz8k79"
+```text
 /u01
 ├── app
 │   ├── 19.0.0
@@ -341,7 +341,7 @@ Information: You may need to update /etc/fstab.
 
 Verify both ASM devices:
 
-```bash"
+```bash
 [root@binary ~]# lsblk /dev/sdb /dev/sdc
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sdb      8:16   0  100G  0 disk
