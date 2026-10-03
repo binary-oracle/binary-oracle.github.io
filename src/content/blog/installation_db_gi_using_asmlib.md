@@ -1314,7 +1314,7 @@ The completed environment includes:
 - Oracle Database registered with Oracle Restart and using ASM storage
 - Database connectivity and instance status successfully verified
 
-The installation used Oracle Database 19.3 and Oracle Grid Infrastructure 19.3 base software and applied the selected Release Update during installation. This approach avoids configuring the Oracle homes at the original 19.3 patch level before subsequently patching them.
+The installation used Oracle Database 19.3 and Oracle Grid Infrastructure 19.3 base software and applied the selected **Release Update 19.32** during installation. 
 
 For future installations, always review the README supplied with the selected Release Update and verify the required OPatch version, component patch numbers, prerequisites, and post-installation requirements before applying the patches.
 
