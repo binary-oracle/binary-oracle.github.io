@@ -1045,9 +1045,7 @@ For this Release Update, the following patches are applied to the Oracle Databas
 Run the installer from the VNC session as the `oracle` user:
 
 ```bash
-[oracle@binary ~]$ /u01/app/oracle/product/19.0.0/dbhome_1/runInstaller \
-    -applyRU /u01/staging/patches/39618711/39467003/39472050 \
-    -applyOneOffs /u01/staging/patches/39618711/39467003/39526364,/u01/staging/patches/39618711/39222882
+[oracle@binary ~]$ /u01/app/oracle/product/19.0.0/dbhome_1/runInstaller -applyRU /u01/staging/patches/39618711/39467003/39472050 -applyOneOffs /u01/staging/patches/39618711/39467003/39526364,/u01/staging/patches/39618711/39222882
 ```
 
 The `-applyRU` option applies the Database Release Update, while `-applyOneOffs` applies the OCW and OJVM patches to the Oracle Database home.
