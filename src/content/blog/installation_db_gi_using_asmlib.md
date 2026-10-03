@@ -1,6 +1,6 @@
 ---
-title: "Installing Oracle Database 19c and Grid Infrastructure with ASMLIB v3 and the Latest Release Update"
-description: "Step-by-step guide to installing Oracle Grid Infrastructure 19c and Oracle Database 19c on Linux using Oracle ASMLIB v3, including patching both Oracle homes to the latest available 19c Release Update."
+title: "Installing Oracle Database 19c and Grid Infrastructure with ASMLIB v3 and the Latest Release Update (19.32)"
+description: "Step-by-step guide to installing Oracle Grid Infrastructure 19c and Oracle Database 19c on Linux using Oracle ASMLIB v3, including patching both Oracle homes to the latest available 19c Release Update (19.32)."
 pubDate: 2026-10-03
 tags:
   - Oracle
