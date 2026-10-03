@@ -30,7 +30,6 @@ The following components should be available before beginning the installation:
 | Oracle Software Storage | Sufficient local storage for Grid Infrastructure, Database home, and Release Updates |
 | Network | At least one configured network interface |
 | SAN Storage | Block devices/LUNs presented to the server for Oracle ASM |
-| Multipathing | Device Mapper Multipath when multiple SAN paths are presented |
 | ASM Storage | Dedicated block devices for ASM disk groups |
 | ASMLIB | Oracle ASMLIB v3 |
 
@@ -79,7 +78,7 @@ For additional information, see [Oracle ASMLIB](https://www.oracle.com/linux/tec
 | --- | --- |
 | Oracle Grid Infrastructure 19c (19.3) | `LINUX.X64_193000_grid_home.zip` |
 | Oracle Database 19c (19.3) | `LINUX.X64_193000_db_home.zip` |
-| OJVM + GI Patch | `p39618711_190000_Linux-x86-64.zip` |
+| OJVM + GI Patch (19.32) | `p39618711_190000_Linux-x86-64.zip` |
 | OPatch | **Patch 6880880** — `p6880880_190000_Linux-x86-64.zip` |
 | Oracle ASMLIB v3 | `oracleasmlib-3.1.3-1.el9.x86_64.rpm` |
 | Oracle ASMLIB Support Tools | `oracleasm-support` |
