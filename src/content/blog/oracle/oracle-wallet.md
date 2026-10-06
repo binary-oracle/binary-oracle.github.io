@@ -54,7 +54,7 @@ The Secure External Password Store is a client-side Oracle wallet that stores da
 
 The basic architecture used in this guide is:
 
-![Wallet Architecture](./screenshots/wallet_arch.png)
+![Wallet Architecture](../screenshots/wallet_arch.png)
 
 The Oracle Net alias identifies the target database, while the wallet contains the database username and password associated with that alias.
 
