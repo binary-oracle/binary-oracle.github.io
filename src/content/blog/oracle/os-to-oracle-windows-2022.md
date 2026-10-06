@@ -57,23 +57,23 @@ Install Windows Server 2022 on the **100 GB operating system disk**.
 
 Complete the standard Winhttp://localhost:4321/blog/os_to_oracle_windows2022/dows Server installation and log in to the server after the installation has finished.
 
-![Windows Installation](./screenshots/win_2.png)
-![Windows Installation](./screenshots/win_1.png)
-![Windows Installation](./screenshots/win_3.png)
-![Windows Installation](./screenshots/win_5.png)
-![Windows Installation](./screenshots/win_6.png)
-![Windows Installation](./screenshots/win_7.png)
-![Windows Installation](./screenshots/win_8.png)
-![Windows Installation](./screenshots/win_9.png)
-![Windows Installation](./screenshots/win_10.png)
+![Windows Installation](../screenshots/win_2.png)
+![Windows Installation](../screenshots/win_1.png)
+![Windows Installation](../screenshots/win_3.png)
+![Windows Installation](../screenshots/win_5.png)
+![Windows Installation](../screenshots/win_6.png)
+![Windows Installation](../screenshots/win_7.png)
+![Windows Installation](../screenshots/win_8.png)
+![Windows Installation](../screenshots/win_9.png)
+![Windows Installation](../screenshots/win_10.png)
 
 ## Enable Remote Desktop Access
 
 Enable **Remote Desktop (RDP)** if remote administration of the Windows Server is required.
 
-![RDP](./screenshots/rdp1.png)
-![RDP](./screenshots/rdp2.png)
-![RDP](./screenshots/rdp3.png)
+![RDP](../screenshots/rdp1.png)
+![RDP](../screenshots/rdp2.png)
+![RDP](../screenshots/rdp3.png)
 
 ## Configure the Disks
 
@@ -87,13 +87,13 @@ The disk used for the Oracle software binaries and the disks used by Oracle ASM 
 
 In this environment, the Oracle software is installed under the `O:` drive.
 
-![Format](./screenshots/format_disk1.png)
-![Format](./screenshots/format_disk2.png)
-![Format](./screenshots/format_disk3.png)
-![Format](./screenshots/format_disk4.png)
-![Format](./screenshots/format_disk5.png)
-![Format](./screenshots/format_disk6.png)
-![Format](./screenshots/format_disk7.png)
+![Format](../screenshots/format_disk1.png)
+![Format](../screenshots/format_disk2.png)
+![Format](../screenshots/format_disk3.png)
+![Format](../screenshots/format_disk4.png)
+![Format](../screenshots/format_disk5.png)
+![Format](../screenshots/format_disk6.png)
+![Format](../screenshots/format_disk7.png)
 
 ### Oracle ASM Disks
 
@@ -107,13 +107,13 @@ The disks are used as follows:
 - **Disk 4** — `RECO`
 
 
-![Format](./screenshots/format_disk8.png)
-![Format](./screenshots/format_disk9.png)
-![Format](./screenshots/format_disk10.png)
-![Format](./screenshots/format_disk11.png)
-![Format](./screenshots/format_disk12.png)
-![Format](./screenshots/format_disk13.png)
-![Format](./screenshots/format_disk14.png)
+![Format](../screenshots/format_disk8.png)
+![Format](../screenshots/format_disk9.png)
+![Format](../screenshots/format_disk10.png)
+![Format](../screenshots/format_disk11.png)
+![Format](../screenshots/format_disk12.png)
+![Format](../screenshots/format_disk13.png)
+![Format](../screenshots/format_disk14.png)
 
 ## Create the Oracle Installation User
 
@@ -134,12 +134,12 @@ If a local user account is used for an Oracle Grid Infrastructure or Oracle RAC 
 - The user must be an explicit member of the local **Administrators** group on the applicable nodes.
 - Oracle Universal Installer might display a warning when a local account is used.
 
-![User](./screenshots/user1.png)
-![User](./screenshots/user2.png)
-![User](./screenshots/user3.png)
-![User](./screenshots/user4.png)
-![User](./screenshots/user5.png)
-![User](./screenshots/user6.png)
+![User](../screenshots/user1.png)
+![User](../screenshots/user2.png)
+![User](../screenshots/user3.png)
+![User](../screenshots/user4.png)
+![User](../screenshots/user5.png)
+![User](../screenshots/user6.png)
 
 ## Prepare the Grid Infrastructure Oracle Home
 
@@ -256,15 +256,15 @@ Launching Oracle Database Setup Wizard...
 
 Follow the Oracle Grid Infrastructure installation wizard to install the software.
 
-![GI](./screenshots/grid9.png)
-![GI](./screenshots/grid8.png)
-![GI](./screenshots/grid7.png)
-![GI](./screenshots/grid5.png)
-![GI](./screenshots/grid4.png)
-![GI](./screenshots/grid6.png)
-![GI](./screenshots/grid3.png)
-![GI](./screenshots/grid2.png) 
-![GI](./screenshots/grid1.png)
+![GI](../screenshots/grid9.png)
+![GI](../screenshots/grid8.png)
+![GI](../screenshots/grid7.png)
+![GI](../screenshots/grid5.png)
+![GI](../screenshots/grid4.png)
+![GI](../screenshots/grid6.png)
+![GI](../screenshots/grid3.png)
+![GI](../screenshots/grid2.png) 
+![GI](../screenshots/grid1.png)
 
 
 ## Stamp the Oracle ASM Disks
@@ -345,14 +345,14 @@ During the configuration, use the previously prepared ASM disk for the `DATA` di
 ORCLDISKDATA01
 ```
 
-![GI_CONF](./screenshots/conf_gi_1.png)
-![GI_CONF](./screenshots/conf_gi_2.png)
-![GI_CONF](./screenshots/conf_gi_3.png)
-![GI_CONF](./screenshots/conf_gi_4.png)
-![GI_CONF](./screenshots/conf_gi_5.png)
-![GI_CONF](./screenshots/conf_gi_6.png)
-![GI_CONF](./screenshots/conf_gi_7.png)
-![GI_CONF](./screenshots/conf_gi_8.png)
+![GI_CONF](../screenshots/conf_gi_1.png)
+![GI_CONF](../screenshots/conf_gi_2.png)
+![GI_CONF](../screenshots/conf_gi_3.png)
+![GI_CONF](../screenshots/conf_gi_4.png)
+![GI_CONF](../screenshots/conf_gi_5.png)
+![GI_CONF](../screenshots/conf_gi_6.png)
+![GI_CONF](../screenshots/conf_gi_7.png)
+![GI_CONF](../screenshots/conf_gi_8.png)
 
 ## Create the RECO ASM Disk Group
 
@@ -374,11 +374,11 @@ In ASMCA, create the `RECO` disk group using the disk stamped as:
 ORCLDISKRECO01
 ```
 
-![RECO](./screenshots/reco_1.png)
-![RECO](./screenshots/reco_2.png)
-![RECO](./screenshots/reco_3.png)
-![RECO](./screenshots/reco_4.png)
-![RECO](./screenshots/reco_5.png)
+![RECO](../screenshots/reco_1.png)
+![RECO](../screenshots/reco_2.png)
+![RECO](../screenshots/reco_3.png)
+![RECO](../screenshots/reco_4.png)
+![RECO](../screenshots/reco_5.png)
 
 ## Verify the Grid Infrastructure Configuration
 
@@ -500,15 +500,15 @@ Launching Oracle Database Setup Wizard...
 
 Complete the Oracle Database software installation using the installation wizard.
 
-![Software](./screenshots/dbhome_1.png)
-![Software](./screenshots/dbhome_2.png)
-![Software](./screenshots/dbhome_3.png)
-![Software](./screenshots/dbhome_4.png)
-![Software](./screenshots/dbhome_5.png)
-![Software](./screenshots/dbhome_6.png)
-![Software](./screenshots/dbhome_7.png)
-![Software](./screenshots/dbhome_8.png)
-![Software](./screenshots/dbhome_9.png)
+![Software](../screenshots/dbhome_1.png)
+![Software](../screenshots/dbhome_2.png)
+![Software](../screenshots/dbhome_3.png)
+![Software](../screenshots/dbhome_4.png)
+![Software](../screenshots/dbhome_5.png)
+![Software](../screenshots/dbhome_6.png)
+![Software](../screenshots/dbhome_7.png)
+![Software](../screenshots/dbhome_8.png)
+![Software](../screenshots/dbhome_9.png)
 
 # Create and Configure the Oracle Database
 
@@ -535,25 +535,25 @@ PROD
 
 Configure the database to use the ASM disk groups created earlier for database and recovery storage.
 
-![Home](./screenshots/win_db_1.png)
-![Home](./screenshots/win_db_2.png)
-![Home](./screenshots/win_db_3.png)
-![Home](./screenshots/win_db_4.png)
-![Home](./screenshots/win_db_5.png)
-![Home](./screenshots/win_db_6.png)
-![Home](./screenshots/win_db_7.png)
-![Home](./screenshots/win_db_8.png)
-![Home](./screenshots/win_db_9.png)
-![Home](./screenshots/win_db_10.png)
-![Home](./screenshots/win_db_net.png)
-![Home](./screenshots/win_db_11.png)
-![Home](./screenshots/win_db_12.png)
-![Home](./screenshots/win_db_13.png)
-![Home](./screenshots/win_db_14.png)
-![Home](./screenshots/win_db_15.png)
-![Home](./screenshots/win_db_16.png)
-![Home](./screenshots/win_db_17.png)
-![Home](./screenshots/win_db_18.png)
+![Home](../screenshots/win_db_1.png)
+![Home](../screenshots/win_db_2.png)
+![Home](../screenshots/win_db_3.png)
+![Home](../screenshots/win_db_4.png)
+![Home](../screenshots/win_db_5.png)
+![Home](../screenshots/win_db_6.png)
+![Home](../screenshots/win_db_7.png)
+![Home](../screenshots/win_db_8.png)
+![Home](../screenshots/win_db_9.png)
+![Home](../screenshots/win_db_10.png)
+![Home](../screenshots/win_db_net.png)
+![Home](../screenshots/win_db_11.png)
+![Home](../screenshots/win_db_12.png)
+![Home](../screenshots/win_db_13.png)
+![Home](../screenshots/win_db_14.png)
+![Home](../screenshots/win_db_15.png)
+![Home](../screenshots/win_db_16.png)
+![Home](../screenshots/win_db_17.png)
+![Home](../screenshots/win_db_18.png)
 
 ## Verify the Oracle Database Configuration
 
