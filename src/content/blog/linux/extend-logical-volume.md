@@ -71,7 +71,7 @@ tmpfs                      tmpfs     6.9G     0  6.9G   0% /sys/fs/cgroup
 /dev/sda1                  xfs      1014M  184M  831M  19% /boot
 tmpfs                      tmpfs     1.4G     0  1.4G   0% /run/user/0
 ```
-![IP Calculation](./screenshots/lvm_structure.png)
+![IP Calculation](../screenshots/lvm_structure.png)
 <p align="center"><em>Figure 1: Current LVM layout before extending the volume group.</em></p>
 
 ## Current Storage Layout

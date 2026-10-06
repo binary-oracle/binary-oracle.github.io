@@ -41,11 +41,11 @@ Start the system and boot from the Oracle Linux installation media.
 
 When the boot menu appears, select the **Install** option to begin the installation.
 
-![Console](./screenshots/boot_menu.png)
+![Console](../screenshots/boot_menu.png)
 
 Before starting the installer, the system performs the required media and hardware initialization checks to detect storage and other devices and prepare the installation environment.
 
-![Console](./screenshots/prechecks_oel9.png)
+![Console](../screenshots/prechecks_oel9.png)
 
 fter the Oracle Linux installer starts, configure the following settings:
 
@@ -58,16 +58,16 @@ fter the Oracle Linux installer starts, configure the following settings:
 
 Wait for the installation to complete, and then reboot the system.
 
-![Console](./screenshots/oel9_install_1.png)
-![Console](./screenshots/oel9_install_2.png)
-![Console](./screenshots/oel9_install_3.png)
-![Console](./screenshots/oel9_install_4.png)
-![Console](./screenshots/oel9_install_5.png)
-![Console](./screenshots/oel9_install_6.png)
-![Console](./screenshots/oel9_install_7.png)
-![Console](./screenshots/oel9_install_8.png)
-![Console](./screenshots/oel9_install_9.png)
-![Console](./screenshots/oel9_install_10.png)
+![Console](../screenshots/oel9_install_1.png)
+![Console](../screenshots/oel9_install_2.png)
+![Console](../screenshots/oel9_install_3.png)
+![Console](../screenshots/oel9_install_4.png)
+![Console](../screenshots/oel9_install_5.png)
+![Console](../screenshots/oel9_install_6.png)
+![Console](../screenshots/oel9_install_7.png)
+![Console](../screenshots/oel9_install_8.png)
+![Console](../screenshots/oel9_install_9.png)
+![Console](../screenshots/oel9_install_10.png)
 
 ## Configure Root SSH Access
 

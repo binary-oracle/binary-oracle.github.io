@@ -8262,15 +8262,15 @@ Monitor the system console during the reboot. The system boots into the Leapp up
 
 The following output shows excerpts from the system console while the upgrade is in progress:
 
-![Console](./screenshots/console1.png)
-![Console](./screenshots/console2.png)
-![Console](./screenshots/console3.png)
-![Console](./screenshots/console4.png)
-![Console](./screenshots/console5.png)
-![Console](./screenshots/console6.png)
-![Console](./screenshots/console7.png)
-![Console](./screenshots/console8.png)
-![Console](./screenshots/console9.png)
+![Console](../screenshots/console1.png)
+![Console](../screenshots/console2.png)
+![Console](../screenshots/console3.png)
+![Console](../screenshots/console4.png)
+![Console](../screenshots/console5.png)
+![Console](../screenshots/console6.png)
+![Console](../screenshots/console7.png)
+![Console](../screenshots/console8.png)
+![Console](../screenshots/console9.png)
 
 
 ## Post-Upgrade Tasks

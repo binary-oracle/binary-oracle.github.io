@@ -18,13 +18,13 @@ The procedure includes identifying the available network range, configuring Virt
 
 The following `ipconfig` output identifies the physical network adapter and the VirtualBox Host-Only adapter.
 
-![Windows ipconfig](./screenshots/ipconfig.png)
+![Windows ipconfig](../screenshots/ipconfig.png)
 
 The Host-Only adapter can also be viewed in **Oracle VirtualBox**.
 
 **Oracle VirtualBox → File → Tools → Network Manager**
 
-![VirtualBox GUI](./screenshots/virtualbox_gui.png)
+![VirtualBox GUI](../screenshots/virtualbox_gui.png)
 
 Alternatively, use PowerShell.
 
@@ -76,7 +76,7 @@ To find the number of bits available for hosts:
 
 Host bits = 32 - 24 = 8 bits
 
-![IP Calculation](./screenshots/math.png)
+![IP Calculation](../screenshots/math.png)
 
 Two IP addresses in every subnet are reserved. The first address (ending in .0) identifies the network itself, while the last address (ending in .255) is reserved for broadcast traffic. This leaves 254 usable IP addresses that can be assigned to hosts within the subnet.
 
@@ -86,11 +86,11 @@ The address `192.168.56.1` is assigned to the VirtualBox Host-Only adapter and a
 
 ## Configure VirtualBox Networking
 
-![VM Setup with Static IP](./screenshots/vm_1.png)
-![VM Setup with Static IP](./screenshots/vm_2.png)
-![VM Setup with Static IP](./screenshots/vm_3.png)
-![VM Setup with Static IP](./screenshots/vm_4.png)
-![VM Setup with Static IP](./screenshots/vm_5.png)
+![VM Setup with Static IP](../screenshots/vm_1.png)
+![VM Setup with Static IP](../screenshots/vm_2.png)
+![VM Setup with Static IP](../screenshots/vm_3.png)
+![VM Setup with Static IP](../screenshots/vm_4.png)
+![VM Setup with Static IP](../screenshots/vm_5.png)
 
 ### VirtualBox Networking Simplified: NAT vs Host-Only
 
