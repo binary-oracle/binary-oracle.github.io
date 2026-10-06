@@ -341,7 +341,7 @@ Information: You may need to update /etc/fstab.
 
 Verify both ASM devices:
 
-```bash
+```bashs
 [root@binary ~]# lsblk /dev/sdb /dev/sdc
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sdb      8:16   0  100G  0 disk
@@ -691,7 +691,7 @@ Connect to the server using any VNC-compatible client. For display `:1`, the VNC
 
 In this guide, **Remmina** on Fedora Linux is used to connect to the VNC session on port `5901`. After establishing the connection, continue with the Oracle Grid Infrastructure installation.
 
-![VNC](./screenshots/vnc.png)
+![VNC](../screenshots/vnc.png)
 
 ### Identify the Grid Infrastructure Patch
 
@@ -744,23 +744,23 @@ The installer first applies the specified Release Update to the Grid Infrastruct
 >
 >Applying the Release Update typically takes approximately 10–15 minutes, depending on the system performance. During this time, the installer patches the Grid Infrastructure home. After the patching process completes successfully, the graphical installer opens automatically.
 
-![VNC2](./screenshots/vnc2.png)
+![VNC2](../screenshots/vnc2.png)
 
 ### Install the Grid Infrastructure Software
 
 After the Release Update has been applied, the Oracle Grid Infrastructure graphical installer opens automatically.
 
-![GI](./screenshots/g1.png)
-![GI](./screenshots/g2.png)
-![GI](./screenshots/g3.png)
-![GI](./screenshots/g4.png)
-![GI](./screenshots/g5.png)
-![GI](./screenshots/g6.png)
-![GI](./screenshots/g7.png)
-![GI](./screenshots/g8.png)
-![GI](./screenshots/g9.png)
-![GI](./screenshots/g10.png)
-![GI](./screenshots/g11.png)
+![GI](../screenshots/g1.png)
+![GI](../screenshots/g2.png)
+![GI](../screenshots/g3.png)
+![GI](../screenshots/g4.png)
+![GI](../screenshots/g5.png)
+![GI](../screenshots/g6.png)
+![GI](../screenshots/g7.png)
+![GI](../screenshots/g8.png)
+![GI](../screenshots/g9.png)
+![GI](../screenshots/g10.png)
+![GI](../screenshots/g11.png)
 
 Run the required scripts as the `root` user in a separate terminal session:
 
@@ -796,7 +796,7 @@ To configure Grid Infrastructure for a Cluster or Grid Infrastructure for a Stan
 This command launches the Grid Infrastructure Setup Wizard. The wizard also supports silent operation, and the parameters can be passed through the response file that is available in the installation media.
 ```
 
-![GI](./screenshots/g12.png)
+![GI](../screenshots/g12.png)
 
 ### Verify the Grid Infrastructure Patches
 
@@ -825,7 +825,7 @@ Return to the **same terminal in the VNC session** as the `oracle` user and star
 [oracle@binary ~]$ /u01/app/19.0.0/grid/gridSetup.sh
 ```
 
-![GI](./screenshots/gis1.png)
+![GI](../screenshots/gis1.png)
 
 On the **Create ASM Disk Group** screen, change the ASM disk discovery path from the default device path to the Oracle ASMLib discovery string:
 
@@ -833,15 +833,15 @@ On the **Create ASM Disk Group** screen, change the ASM disk discovery path from
 ORCL:*
 ```
 
-![GI](./screenshots/gis2.png)
-![GI](./screenshots/gis3.png)
-![GI](./screenshots/gis4.png)
-![GI](./screenshots/gis5.png)
-![GI](./screenshots/gis6.png)
-![GI](./screenshots/gis7.png)
-![GI](./screenshots/gis8.png)
-![GI](./screenshots/gis9.png)
-![GI](./screenshots/gis10.png)
+![GI](../screenshots/gis2.png)
+![GI](../screenshots/gis3.png)
+![GI](../screenshots/gis4.png)
+![GI](../screenshots/gis5.png)
+![GI](../screenshots/gis6.png)
+![GI](../screenshots/gis7.png)
+![GI](../screenshots/gis8.png)
+![GI](../screenshots/gis9.png)
+![GI](../screenshots/gis10.png)
 
 Run the required scripts as the `root` user in a separate terminal session:
 
@@ -850,9 +850,9 @@ Run the required scripts as the `root` user in a separate terminal session:
 All Fix-up operations were completed successfully.
 ```
 
-![GI](./screenshots/gis11.png)
-![GI](./screenshots/gis12.png)
-![GI](./screenshots/gis13.png)
+![GI](../screenshots/gis11.png)
+![GI](../screenshots/gis12.png)
+![GI](../screenshots/gis13.png)
 
 Run the required scripts as the `root` user in a separate terminal session:
 
@@ -891,8 +891,8 @@ binary     2026/10/03 15:18:06     /u01/app/oracle/crsdata/binary/olr/backup_202
 2026/10/03 15:18:07 CLSRSC-327: Successfully configured Oracle Restart for a standalone server
 ```
 
-![GI](./screenshots/gis14.png)
-![GI](./screenshots/gis15.png)
+![GI](../screenshots/gis14.png)
+![GI](../screenshots/gis15.png)
 
 ### Create the RECO ASM Disk Group
 
@@ -904,11 +904,11 @@ From the **same VNC session**, run ASMCA as the `oracle` user:
 [oracle@binary ~]$ /u01/app/19.0.0/grid/bin/asmca
 ```
 
-![asmca](./screenshots/asmca1.png)
-![asmca](./screenshots/asmca2.png)
-![asmca](./screenshots/asmca3.png)
-![asmca](./screenshots/asmca4.png)
-![asmca](./screenshots/asmca5.png)
+![asmca](../screenshots/asmca1.png)
+![asmca](../screenshots/asmca2.png)
+![asmca](../screenshots/asmca3.png)
+![asmca](../screenshots/asmca4.png)
+![asmca](../screenshots/asmca5.png)
 
 ### Verify the Grid Infrastructure Configuration
 
@@ -1031,7 +1031,7 @@ The patch numbers and component names can be verified in the `README.html` inclu
 /u01/staging/patches/39618711/39467003/README.html
 ```
 
-![Patch table](./screenshots/patches.png)
+![Patch table](../screenshots/patches.png)
 
 For this Release Update, the following patches are applied to the Oracle Database home:
 
@@ -1055,7 +1055,7 @@ The `-applyRU` option applies the Database Release Update, while `-applyOneOffs`
 
 The installer applies the specified patches before opening the Oracle Database graphical installer. This process can take several minutes depending on system performance.
 
-![Patch table](./screenshots/patches2.png)
+![Patch table](../screenshots/patches2.png)
 
 Follow the installer prompts to complete the Oracle Database software installation.
 
@@ -1063,17 +1063,17 @@ Follow the installer prompts to complete the Oracle Database software installati
 >
 > At this stage, only the Oracle Database software is installed. The database will be created and configured separately after the software installation is complete.
 
-![DB](./screenshots/db1.png)
-![DB](./screenshots/db2.png)
-![DB](./screenshots/db3.png)
-![DB](./screenshots/db4.png)
-![DB](./screenshots/db5.png)
-![DB](./screenshots/db6.png)
-![DB](./screenshots/db7.png)
-![DB](./screenshots/db8.png)
-![DB](./screenshots/db9.png)
-![DB](./screenshots/db10.png)
-![DB](./screenshots/db11.png)
+![DB](../screenshots/db1.png)
+![DB](../screenshots/db2.png)
+![DB](../screenshots/db3.png)
+![DB](../screenshots/db4.png)
+![DB](../screenshots/db5.png)
+![DB](../screenshots/db6.png)
+![DB](../screenshots/db7.png)
+![DB](../screenshots/db8.png)
+![DB](../screenshots/db9.png)
+![DB](../screenshots/db10.png)
+![DB](../screenshots/db11.png)
 
 Run the required scripts as the `root` user in a separate terminal session:
 
@@ -1096,7 +1096,7 @@ Finished running generic part of root script.
 Now product-specific root actions will be performed.
 ```
 
-![DB](./screenshots/db12.png)
+![DB](../screenshots/db12.png)
 
 ### Verify the Oracle Database Patch Level
 
@@ -1135,21 +1135,21 @@ Run DBCA as the `oracle` user:
 
 The Oracle Database Configuration Assistant opens. Follow the graphical wizard to create and configure the database.
 
-![DB](./screenshots/dbca1.png)
-![DB](./screenshots/dbca2.png)
-![DB](./screenshots/dbca3.png)
-![DB](./screenshots/dbca4.png)
-![DB](./screenshots/dbca5.png)
-![DB](./screenshots/dbca6.png)
-![DB](./screenshots/dbca7.png)
-![DB](./screenshots/dbca8.png)
-![DB](./screenshots/dbca9.png)
-![DB](./screenshots/dbca10.png)
-![DB](./screenshots/dbca11.png)
-![DB](./screenshots/dbca12.png)
-![DB](./screenshots/dbca13.png)
-![DB](./screenshots/dbca14.png)
-![DB](./screenshots/dbca15.png)
+![DB](../screenshots/dbca1.png)
+![DB](../screenshots/dbca2.png)
+![DB](../screenshots/dbca3.png)
+![DB](../screenshots/dbca4.png)
+![DB](../screenshots/dbca5.png)
+![DB](../screenshots/dbca6.png)
+![DB](../screenshots/dbca7.png)
+![DB](../screenshots/dbca8.png)
+![DB](../screenshots/dbca9.png)
+![DB](../screenshots/dbca10.png)
+![DB](../screenshots/dbca11.png)
+![DB](../screenshots/dbca12.png)
+![DB](../screenshots/dbca13.png)
+![DB](../screenshots/dbca14.png)
+![DB](../screenshots/dbca15.png)
 
 #### Database Architecture
 

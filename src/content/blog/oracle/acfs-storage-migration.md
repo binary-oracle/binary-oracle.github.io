@@ -1,5 +1,5 @@
 ---
-title: "Online Oracle ACFS Storage Migration to New SAN Storage Using ASM Rebalance"
+title: "Online Oracle ACFS Storage Migration to New SAN Storage"
 description: "Step-by-step guide to performing an online migration of the storage underlying Oracle ACFS to new SAN storage using Linux multipath, udev, and Oracle ASM rebalance without disrupting the live production workload."
 pubDate: 2026-09-24
 tags:

@@ -1053,7 +1053,7 @@ http://localhost:8080/
 
 The default Apache Tomcat page should be displayed.
 
-![Tomcat Default](./screenshots/tomcat.png)
+![Tomcat Default](../screenshots/tomcat.png)
 
 At this stage, the test verifies only the base Apache Tomcat installation.
 
@@ -1184,7 +1184,7 @@ C:\oracle\tomcat_9.0.120\webapps\
 └── i\
 ```
 
-![Tomcat Webapps](./screenshots/tomcat_webapps.png)
+![Tomcat Webapps](../screenshots/tomcat_webapps.png)
 
 The `i` directory contains the Oracle APEX static resources.
 
@@ -1256,7 +1256,7 @@ Verify that ORDS is accessible:
 ```text
 http://localhost:8080/ords/
 ```
-![ORDS](./screenshots/ords.png)
+![ORDS](../screenshots/ords.png)
 
 Verify that:
 
@@ -1276,7 +1276,7 @@ A useful validation is the APEX version file:
 http://localhost:8080/i/apex_version.txt
 ```
 
-![APEX](./screenshots/apex_ver.png)
+![APEX](../screenshots/apex_ver.png)
 
 The returned version should correspond to the Oracle APEX version installed in the database.
 
@@ -1294,7 +1294,7 @@ Access Oracle APEX through ORDS:
 http://localhost:8080/ords/
 ```
 
-![APEX](./screenshots/apex.png)
+![APEX](../screenshots/apex.png)
 
 Verify that:
 
@@ -1409,7 +1409,7 @@ If the ORDS configuration location is not embedded in `ords.war`, add the follow
 -Dconfig.url=C:\oracle\ords-config
 ```
 
-![Tomcat Configuration](./screenshots/tomcat_conf.png)
+![Tomcat Configuration](../screenshots/tomcat_conf.png)
 
 > The Tomcat Windows service uses the Windows service wrapper configuration. Do not rely on `setenv.bat` to configure JVM options for the Windows service.
 
@@ -1458,7 +1458,7 @@ The service should report:
 STATE              : 4  RUNNING
 ```
 
-![Tomcat Services](./screenshots/tomcat_win.png)
+![Tomcat Services](../screenshots/tomcat_win.png)
 
 Verify that ORDS remains accessible:
 
@@ -1780,11 +1780,11 @@ Because this environment uses a self-signed certificate, the browser displays a 
 
 This behavior is expected.
 
-![Self-Signed cert](./screenshots/self_signed.png)
+![Self-Signed cert](../screenshots/self_signed.png)
 
 Proceed to the site to verify the HTTPS configuration.
 
-![HTTPS ORDS](./screenshots/https_ords.png)
+![HTTPS ORDS](../screenshots/https_ords.png)
 
 ### Verify the Certificate
 
@@ -1796,7 +1796,7 @@ Verify that the certificate contains:
 CN=apex.lab.local
 ```
 
-![HTTPS CET](./screenshots/cert.png)
+![HTTPS CET](../screenshots/cert.png)
 
 The certificate should correspond to the certificate stored in:
 
@@ -1812,7 +1812,7 @@ Access Oracle APEX through ORDS using:
 https://apex.lab.local:8443/ords/
 ```
 
-![HTTPS APEX](./screenshots/https_apex.png)
+![HTTPS APEX](../screenshots/https_apex.png)
 
 Verify that:
 
