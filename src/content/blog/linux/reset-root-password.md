@@ -1,5 +1,5 @@
 ---
-title: "How to Reset the Root Password in Oracle Linux 7, 8, 9, and 10"
+title: "How to Reset the Root Password in Oracle Linux 7, 8, and 9"
 description: "Step-by-step guide to resetting the root password in Oracle Linux using GRUB 2, rd.break, and SELinux recovery procedures."
 pubDate: 2026-10-09
 tags:
@@ -7,13 +7,12 @@ tags:
   - Oracle Linux 7
   - Oracle Linux 8
   - Oracle Linux 9
-  - Oracle Linux 10
   - Linux
 ---
 
-This guide demonstrates how to reset a forgotten `root` password on **Oracle Linux 7, 8, 9, and 10** using the GRUB 2 bootloader and the `rd.break` kernel parameter.
+This guide demonstrates how to reset a forgotten `root` password on **Oracle Linux 7, 8, and 9** using the GRUB 2 bootloader and the `rd.break` kernel parameter.
 
-The recovery procedure is based on the Oracle Linux / Red Hat Enterprise Linux boot process. The screenshots were captured on **Oracle Linux 9**. While the general approach applies to the other listed versions, bootloader syntax and security configuration can differ; verify the procedure in your environment, particularly on Oracle Linux 10.
+The recovery procedure is based on the Oracle Linux / Red Hat Enterprise Linux boot process. The screenshots were captured on **Oracle Linux 9**. While the general approach applies to the other listed versions, bootloader syntax and security configuration can differ, verify the procedure in your environment.
 
 ## Prerequisites
 
@@ -239,14 +238,13 @@ Enforcing
 
 ## Oracle Linux Version Differences
 
-The recovery steps are broadly similar across Oracle Linux 7, 8, 9, and 10. The GRUB entry syntax depends on the release, firmware mode, and installed bootloader configuration.
+The recovery steps are broadly similar across Oracle Linux 7, 8, and 9. The GRUB entry syntax depends on the release, firmware mode, and installed bootloader configuration.
 
 | Version | Typical GRUB kernel command | Recovery parameter |
 | --- | --- | --- |
 | Oracle Linux 7 | `linux16` or `linuxefi` on many systems | `rd.break` |
 | Oracle Linux 8 | `linux` on many systems | `rd.break` |
 | Oracle Linux 9 | `linux` on many systems | `rd.break` |
-| Oracle Linux 10 | `linux` on many systems | `rd.break` |
 
 Use the command line actually displayed in GRUB rather than assuming a particular prefix. These screenshots document a test on Oracle Linux 9; the complete sequence was not independently tested here on every listed release.
 
