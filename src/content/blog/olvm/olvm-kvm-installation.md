@@ -80,35 +80,35 @@ The additional firewall ports required on KVM hosts will be documented separatel
 
 Boot the Oracle Linux installation media and select **English (United States)** or the required installation language.
 
-![Oracle Linux installation language](./screenshots/01.png)
+![Oracle Linux installation language](../screenshots/01.png)
 
 ### Configure the Keyboard Layout
 
 Select the appropriate keyboard layout. This installation includes German (Austria, no dead keys) and English (US).
 
-![Keyboard layout](./screenshots/02.png)
+![Keyboard layout](../screenshots/02.png)
 
 ### Configure Time and Date
 
 Set the appropriate time zone and enable network time synchronization where available. The example uses **Europe/Vienna**.
 
-![Time and date](./screenshots/03.png)
+![Time and date](../screenshots/03.png)
 
 ### Select Minimal Install
 
 Under **Software Selection**, select **Minimal Install** without additional software groups. Oracle recommends a minimal base environment for the standalone OLVM Engine.
 
-![Minimal Install selection](./screenshots/04.png)
+![Minimal Install selection](../screenshots/04.png)
 
 ### Configure Installation Storage
 
 Select the **100 GiB** installation disk and choose **Custom** storage configuration.
 
-![Installation destination](./screenshots/05.png)
+![Installation destination](../screenshots/05.png)
 
 Use LVM for the operating system volumes and create the required EFI and boot partitions.
 
-![Custom partitioning](./screenshots/06.png)
+![Custom partitioning](../screenshots/06.png)
 
 The screenshots show the following partitioning configuration:
 
@@ -121,20 +121,20 @@ The screenshots show the following partitioning configuration:
 | `/home` | LVM, XFS | Adjusted during partitioning |
 
 
-![LVM volume group](./screenshots/08.png)
+![LVM volume group](../screenshots/08.png)
 
-![LVM home adjustment](./screenshots/09.png)
+![LVM home adjustment](../screenshots/09.png)
 
-![Final boot partition settings](./screenshots/11.png)
+![Final boot partition settings](../screenshots/11.png)
 
-![EFI partition settings](./screenshots/12.png)
+![EFI partition settings](../screenshots/12.png)
 
-![EFI partition settings](./screenshots/13.png)
+![EFI partition settings](../screenshots/13.png)
 
 
 Review the proposed changes before accepting the disk layout.
 
-![Partitioning summary](./screenshots/14.png)
+![Partitioning summary](../screenshots/14.png)
 
 > **Important**
 >
@@ -152,17 +152,17 @@ Configure a static IPv4 address on interface `enp1s0`.
 | Default gateway | `10.50.71.1` |
 | DNS server | `10.50.71.2` |
 
-![Static IPv4 settings](./screenshots/15.png)
+![Static IPv4 settings](../screenshots/15.png)
 
 Enable the network interface and configure a fully qualified hostname that resolves correctly in DNS.
 
-![Network and hostname](./screenshots/16.png)
+![Network and hostname](../screenshots/16.png)
 
 ### Begin the Operating System Installation
 
 Review the installation summary. Confirm **Minimal Install**, storage configuration, networking, and the root password, then select **Begin Installation**.
 
-![Installation summary](./screenshots/17.png)
+![Installation summary](../screenshots/17.png)
 
 Wait for the installation to finish and reboot the server.
 
@@ -759,7 +759,7 @@ After a successful Engine setup, open the administration portal using the Engine
 https://labor.lab.example.com/ovirt-engine
 ```
 
-![OLVM GUI](./screenshots/18.png)
+![OLVM GUI](../screenshots/18.png)
 
 Sign in using the administrator credentials configured during `engine-setup`.
 
@@ -767,8 +767,8 @@ Sign in using the administrator credentials configured during `engine-setup`.
 >
 > The standalone OLVM Engine must be installed and operational before adding Oracle Linux KVM hosts. KVM host installation and registration are covered in the next section.
 
-![OLVM GUI Login](./screenshots/19.png)
-![OLVM GUI Login](./screenshots/20.png)
+![OLVM GUI Login](../screenshots/19.png)
+![OLVM GUI Login](../screenshots/20.png)
 
 ## Verify the OLVM Engine Installation
 
@@ -956,13 +956,13 @@ Click **New** and configure the data center with the following settings:
 | Compatibility Version | `4.7` |
 | Quota Mode | `Disabled` |
 
-![Create OLVM data center](./screenshots/25.png)
+![Create OLVM data center](../screenshots/25.png)
 
 Click **OK** to create the data center.
 
 The **Data Center - Guide Me** dialog appears and lists the remaining configuration tasks, including the cluster, hosts, and storage domains.
 
-![Data center configuration wizard](./screenshots/26.png)
+![Data center configuration wizard](../screenshots/26.png)
 
 Click **Configure Later** to continue with the cluster configuration manually.
 
@@ -988,7 +988,7 @@ Configure the cluster with the following settings:
 | Compatibility Version | `4.7` |
 | Switch Type | `Linux Bridge` |
 
-![Create OLVM cluster](./screenshots/27.png)
+![Create OLVM cluster](../screenshots/27.png)
 
 Review the remaining cluster settings and retain the defaults where appropriate.
 
@@ -1000,7 +1000,7 @@ Click **OK** to create the cluster.
 
 The **Cluster - Guide Me** dialog confirms that the cluster has been created and offers the option to configure a host.
 
-![Cluster creation completed](./screenshots/28.png)
+![Cluster creation completed](../screenshots/28.png)
 
 Click **Configure Later**. The KVM host installation and registration will be covered in the next section.
 
@@ -1814,14 +1814,14 @@ Before submitting, ensure that the KVM host processor is compatible with the CPU
 
 Click **OK** to begin host deployment.
 
-![KVM Host Installation](./screenshots/21.png)
-![KVM Host Installation](./screenshots/22.png)
+![KVM Host Installation](../screenshots/21.png)
+![KVM Host Installation](../screenshots/22.png)
 
 OLVM connects to the KVM host using SSH public-key authentication and deploys the required virtualization management components.
 
 Monitor the host under **Compute → Hosts** until it reaches **Up** status.
 
-![KVM Host Installation](./screenshots/23.png)
+![KVM Host Installation](../screenshots/23.png)
 
 > **Note**
 >
@@ -1841,7 +1841,7 @@ Once deployment is complete, verify the following information in the OLVM Admini
 | Operating System | Supported Oracle Linux 9 release |
 | Kernel | UEK R8 |
 
-![KVM Host Installation](./screenshots/24.png)
+![KVM Host Installation](../screenshots/24.png)
 
 The KVM host is now registered with OLVM.
 
@@ -2129,7 +2129,7 @@ Start the installation and wait until the host status changes to **Up**.
 
 Both KVM hosts should then be visible under **Compute → Hosts**.
 
-![Both KVM Hosts](./screenshots/29.png)
+![Both KVM Hosts](../screenshots/29.png)
 
 ### Step 3: Configure the Dedicated iSCSI Network
 
@@ -2266,15 +2266,15 @@ The Oracle ZFS Storage Appliance provides the following shared storage:
 | Initiator Group | `labor_hosts` |
 | LUN GUID | `600144F0EB1FAD90000063E0F0B60007` |
 
-![ZFS Storage Appliance](./screenshots/30.png)
+![ZFS Storage Appliance](../screenshots/30.png)
 
 Both KVM host initiators must be members of the `labor_hosts` initiator group to access the shared LUN.
 
 After verifying the initiator configuration and storage access, navigate to **Storage → Domains → New Domain** in the OLVM Administration Portal.
 
-![New Domain](./screenshots/31.png)
-![New Domain](./screenshots/32.png)
-![New Domain](./screenshots/33.png)
+![New Domain](../screenshots/31.png)
+![New Domain](../screenshots/32.png)
+![New Domain](../screenshots/33.png)
 
 The shared Data Domain is created **once in OLVM**, not separately for each KVM host.
 
@@ -2302,15 +2302,15 @@ Verify the configuration in the OLVM Administration Portal:
 
 1. Navigate to **Compute → Data Centers** and confirm that `DC-LAB` has status **Up**.
 
-![Data Centers](./screenshots/34.png)
+![Data Centers](../screenshots/34.png)
 
 2. Navigate to **Compute → Hosts** and verify that both KVM hosts have status **Up**.
 
-![Hosts](./screenshots/29.png)
+![Hosts](../screenshots/29.png)
 
 3. Navigate to **Storage → Domains** and confirm that `default_domain` is **Active** and attached to `DC-LAB`.
 
-![Domains](./screenshots/33.png)
+![Domains](../screenshots/33.png)
 
 The shared iSCSI storage is now available for virtual machine disks and other supported storage operations.
 
@@ -2336,8 +2336,8 @@ In the OLVM Administration Portal:
 6. Once the connection test succeeds, click **OK** to start the upload.
 7. Monitor the upload progress until the ISO image is successfully transferred.
 
-![ISO](./screenshots/35.png)
-![Upload monitoring](./screenshots/36.png)
+![ISO](../screenshots/35.png)
+![Upload monitoring](../screenshots/36.png)
 
 > **Note**
 >
@@ -2352,7 +2352,7 @@ After the upload completes, verify that the ISO image has been successfully tran
 3. Verify that its status is **OK**.
 4. Confirm that the image is stored in the `default_domain` storage domain.
 
-![Status](./screenshots/37.png)
+![Status](../screenshots/37.png)
 
 A successful upload confirms that the OLVM image upload service is operational and that the shared iSCSI Data Domain can accept image data.
 
