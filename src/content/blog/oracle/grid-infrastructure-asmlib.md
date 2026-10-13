@@ -66,7 +66,7 @@ Before installing Oracle ASMLib v3, verify that the operating system, kernel, Or
 >
 > Oracle Database 19c support for Oracle ASMLib requires **Oracle Database 19c Release Update 19.21 with the required patch, or later**. This guide patches Oracle Grid Infrastructure and Oracle Database to the latest available 19c Release Update.
 
-All Oracle ASMLib installations require the `oracleASMLib` and `oracleasm-support` packages. The `oracleasm-support` package is available from the [Unbreakable Linux Network](https://linux.oracle.com/) (ULN) or the [Oracle Linux Yum Server](https://yum.oracle.com/).
+All Oracle ASMLib installations require the `oracleasmlib` and `oracleasm-support` packages. The `oracleasm-support` package is available from the [Unbreakable Linux Network](https://linux.oracle.com/) (ULN) or the [Oracle Linux Yum Server](https://yum.oracle.com/).
 
 The ASM block devices must be presented and visible to the operating system before they are configured with ASMLib. When SAN storage uses multiple paths, configure and verify Device Mapper Multipath before creating ASMLib disk labels.
 
@@ -80,7 +80,7 @@ For additional information, see [Oracle ASMLib](https://www.oracle.com/linux/tec
 | Oracle Database 19c (19.3) | `LINUX.X64_193000_db_home.zip` |
 | OJVM + GI Patch (19.32) | `p39618711_190000_Linux-x86-64.zip` |
 | OPatch | **Patch 6880880** — `p6880880_190000_Linux-x86-64.zip` |
-| Oracle ASMLib v3 | `oracleASMLib-3.1.3-1.el9.x86_64.rpm` |
+| Oracle ASMLib v3 | `oracleasmlib-3.1.3-1.el9.x86_64.rpm` |
 | Oracle ASMLib Support Tools | `oracleasm-support` |
 
 > **Note**
@@ -246,9 +246,9 @@ oracle@192.168.56.30's password:
 LINUX.X64_193000_db_home.zip                        100% 2918MB 459.8MB/s   00:06    
 LINUX.X64_193000_grid_home.zip                      100% 2755MB 314.6MB/s   00:08
 
-honey7@fedora:~/Downloads$ scp oracleASMLib-3.1.3-1.el9.x86_64.rpm oracle@192.168.56.30:/u01/staging/software
+honey7@fedora:~/Downloads$ scp oracleasmlib-3.1.3-1.el9.x86_64.rpm oracle@192.168.56.30:/u01/staging/software
 oracle@192.168.56.30's password: 
-oracleASMLib-3.1.3-1.el9.x86_64.rpm                 100%   53KB  41.6MB/s   00:00   
+oracleasmlib-3.1.3-1.el9.x86_64.rpm                 100%   53KB  41.6MB/s   00:00   
 ```
 
 ```bash
@@ -265,7 +265,7 @@ After the transfer completes, connect to the server as `oracle` and verify the f
 total 5.6G
 -rw-r--r--. 1 oracle oinstall 2.9G Oct  3 13:04 LINUX.X64_193000_db_home.zip
 -rw-r--r--. 1 oracle oinstall 2.7G Oct  3 13:05 LINUX.X64_193000_grid_home.zip
--rw-r--r--. 1 oracle oinstall  54K Oct  3 13:22 oracleASMLib-3.1.3-1.el9.x86_64.rpm
+-rw-r--r--. 1 oracle oinstall  54K Oct  3 13:22 oracleasmlib-3.1.3-1.el9.x86_64.rpm
 
 [oracle@binary ~]$ ls -lh /u01/staging/patches
 total 3.0G
@@ -364,9 +364,9 @@ Do not create filesystems on these partitions. They will be configured as Oracle
 Oracle ASMLib consists of two required packages:
 
 - `oracleasm-support` — provides the ASMLib administration utilities and service.
-- `oracleASMLib` — provides the Oracle ASMLib userspace library.
+- `oracleasmlib` — provides the Oracle ASMLib userspace library.
 
-On Oracle Linux 9, the `oracleasm-support` package is available from the Oracle Linux Addons repository. The `oracleASMLib` package can be downloaded separately and installed as an RPM.
+On Oracle Linux 9, the `oracleasm-support` package is available from the Oracle Linux Addons repository. The `oracleasmlib` package can be downloaded separately and installed as an RPM.
 
 > **Note**
 >
@@ -445,9 +445,9 @@ oracleASMLib-3.1.3-1.el9.x86_64
 Verify that both required ASMLib packages are installed:
 
 ```bash
-[root@binary ~]# rpm -q oracleasm-support oracleASMLib
+[root@binary ~]# rpm -q oracleasm-support oracleasmlib
 oracleasm-support-3.1.1-6.el9.x86_64
-oracleASMLib-3.1.3-1.el9.x86_64
+oracleasmlib-3.1.3-1.el9.x86_64
 ```
 
 At this point, the Oracle ASMLib v3.1 software is installed and ready to be configured.
