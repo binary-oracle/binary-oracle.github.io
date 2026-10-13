@@ -2185,7 +2185,7 @@ InitiatorName=iqn.1994-05.com.redhat:e2365ef465a
 
 Record the IQN and ensure that both KVM hosts are authorized on the ZFS Storage Appliance.
 
-###Configure Shared Storage
+### Configure Shared Storage
 
 Once both KVM hosts are installed and their dedicated iSCSI networks are operational, prepare the hosts for access to the shared iSCSI Data Domain.
 
