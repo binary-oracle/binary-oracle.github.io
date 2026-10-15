@@ -1946,51 +1946,68 @@ Confirm that `eno2` corresponds to the physical NET 1 connection on the storage 
 >
 > Do not modify the existing `ovirtmgmt` bridge or its management IP address. The dedicated iSCSI network must be configured separately.
 
-#### Step 6.3: Create the iSCSI NetworkManager Connection
+#### Step 6.3: Configure the iSCSI Storage Network Through the OLVM GUI (Recommended)
 
-Once `eno2` has been confirmed as the dedicated storage interface, create a persistent NetworkManager connection.
+When the KVM hosts are managed by Oracle Linux Virtualization Manager, configuring the storage network through the OLVM Administration Portal is the recommended approach. This makes the logical network, interface assignment, static IPv4 configuration, and MTU visible and manageable in OLVM.
 
-The required settings are:
+##### Step 6.3.1: Create the iSCSI Logical Network
+
+Navigate to **Network → Networks → New** in the OLVM Administration Portal and create the following logical network in `DC-LAB`:
 
 | Parameter | Value |
 | --- | --- |
-| Connection Name | `iscsi-net` |
-| Interface | `eno2` |
-| IPv4 Address | `100.66.71.55/24` |
-| MTU | `9000` |
-| Default Gateway | None |
-| IPv6 | Disabled |
-| Autoconnect | Enabled |
+| Name | `iscsi-net` |
+| Description | `Storage` |
+| Data Center | `DC-LAB` |
+| Enable VLAN tagging | Disabled |
+| VM network | Disabled |
+| MTU | Custom: `9000` |
 
-Create the connection:
+VLAN 666 is untagged on the storage switch ports, so VLAN tagging must remain disabled on the host network. The iSCSI network is for host storage traffic, not virtual machine networking.
 
-```bash
-[root@psvtnubecu1 ~]# nmcli connection add \
-  type ethernet \
-  con-name iscsi-net \
-  ifname eno2 \
-  ipv4.method manual \
-  ipv4.addresses 100.66.71.55/24 \
-  ipv6.method disabled \
-  802-3-ethernet.mtu 9000 \
-  connection.autoconnect yes
-Connection 'iscsi-net' (8662b93c-bef3-4361-b6d3-ace56f762b3f) successfully added.
-```
+![OLVM iSCSI logical network settings](../screenshots/iscsi-network-settings.png)
 
-Activate the connection:
 
-```bash
-[root@psvtnubecu1 ~]# nmcli connection up iscsi-net
-Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/13)
-```
+![OLVM iSCSI logical network list](../screenshots/iscsi-network-list.png)
 
-The connection is stored persistently by NetworkManager and configured to activate automatically after a reboot.
 
-> **Note**
+Click **OK** to save the logical network.
+
+##### Step 6.3.2: Assign the Logical Network to Each Host
+
+Navigate to **Compute → Hosts**, select the host, open **Network Interfaces**, and click **Setup Host Networks**.
+
+Assign `iscsi-net` to the physical storage interface `eno2`. Keep the management network `ovirtmgmt` on `eno1`, do not change the management interface.
+
+##### Step 6.3.3: Configure Static IPv4 Settings
+
+Edit `iscsi-net` on each host and select **IPv4 → Static**:
+
+| Parameter | `psvtnubecu1` | `psvtnubecu2` |
+| --- | --- | --- |
+| Interface | `eno2` | `eno2` |
+| IP address | `100.66.71.55` | `100.66.71.56` |
+| Netmask | `255.255.255.0` | `255.255.255.0` |
+| Gateway | Leave empty | Leave empty |
+| Logical network MTU | `9000` | `9000` |
+
+The storage target `100.66.71.25` is on the same subnet, so no storage-network default gateway is needed. Review IPv6 settings according to site requirements.
+
+**First KVM host — `psvtnubecu1`:**
+
+![OLVM static iSCSI IPv4 configuration for psvtnubecu1](../screenshots/iscsi-host-psvtnubecu1.png)
+![OLVM static iSCSI IPv4 configuration for psvtnubecu1](../screenshots/51.png)
+
+**Second KVM host — `psvtnubecu2`:**
+
+![OLVM static iSCSI IPv4 configuration for psvtnubecu2](../screenshots/iscsi-host-psvtnubecu2.png)
+![OLVM static iSCSI IPv4 configuration for psvtnubecu1](../screenshots/50.png)
+
+Save the IPv4 settings and confirm **Setup Host Networks** on each host. Verify that `iscsi-net` is assigned to `eno2` and that both hosts retain their management connectivity.
+
+> **Recommended**
 >
-> The command assumes that `eno2` is not already managed by another connection profile. If an existing profile is present, modify that profile instead of creating a conflicting connection.
->
-> On an OLVM-managed host, coordinate network changes with the OLVM network configuration to avoid inconsistencies during future host network operations.
+> Use the OLVM GUI for storage networking when hosts are managed by OLVM. It offers centralized configuration and visibility. Use the OLVM Administration Portal to manage changes to this logical network.
 
 #### Step 6.4: Verify the iSCSI Interface Configuration
 
@@ -2133,7 +2150,7 @@ Both KVM hosts should then be visible under **Compute → Hosts**.
 
 ### Step 3: Configure the Dedicated iSCSI Network
 
-Configure the second host's dedicated iSCSI interface using the same NetworkManager procedure described in **Step 6: Prepare Shared iSCSI Storage** for the first host.
+Configure the second host's dedicated iSCSI interface using the OLVM GUI procedure described in **Step 6: Prepare Shared iSCSI Storage** for the first host. Use the second host's storage IP address, `100.66.71.56/24`.
 
 The host-specific difference is the iSCSI IP address.
 
@@ -2405,3 +2422,5 @@ The infrastructure is now prepared for virtual machine provisioning, operating s
 > **Note**
 >
 > A successful ISO upload verifies basic storage write functionality. Additional validation, including virtual machine creation, startup, migration between KVM hosts, and recovery testing, should be performed before the environment is considered ready for production workloads.
+
+ 
