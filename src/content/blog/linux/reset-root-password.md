@@ -1,5 +1,5 @@
 ---
-title: "How to Reset the Root Password in Oracle Linux 7, 8, and 9"
+title: "How to Reset the Root Password in Oracle Linux 7, 8 and 9"
 description: "Step-by-step guide to resetting the root password in Oracle Linux using GRUB 2, rd.break, and SELinux recovery procedures."
 pubDate: 2026-10-09
 tags:
@@ -10,7 +10,7 @@ tags:
   - Linux
 ---
 
-This guide demonstrates how to reset a forgotten `root` password on **Oracle Linux 7, 8, and 9** using the GRUB 2 bootloader and the `rd.break` kernel parameter.
+This guide demonstrates how to reset a forgotten `root` password on **Oracle Linux 7, 8 and 9** using the GRUB 2 bootloader and the `rd.break` kernel parameter.
 
 The recovery procedure is based on the Oracle Linux / Red Hat Enterprise Linux boot process. The screenshots were captured on **Oracle Linux 9**. While the general approach applies to the other listed versions, bootloader syntax and security configuration can differ, verify the procedure in your environment.
 

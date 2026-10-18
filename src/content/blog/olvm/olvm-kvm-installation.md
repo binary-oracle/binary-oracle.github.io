@@ -2021,7 +2021,6 @@ eno2             UP             100.66.71.55/24
 Verify the interface MTU:
 
 ```bash
-
 [root@psvtnubecu1 ~]# ip link show eno2
 5: eno2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UP mode DEFAULT group default qlen 1000
     link/ether 00:10:e0:68:8e:21 brd ff:ff:ff:ff:ff:ff
