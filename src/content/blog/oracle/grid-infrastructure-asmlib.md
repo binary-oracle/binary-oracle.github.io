@@ -193,7 +193,7 @@ The resulting directory structure is:
 
 The server uses dedicated logical volumes for the operating system and Oracle software. The `/u01` filesystem is reserved for the Oracle Grid Infrastructure home, Oracle Database home, and software staging area.
 
-```bash id="iy8l9h"
+```bash
 [root@binary ~]# df -h
 Filesystem                     Size  Used Avail Use% Mounted on
 devtmpfs                       4.0M     0  4.0M   0% /dev
@@ -230,7 +230,7 @@ passwd: all authentication tokens updated successfully.
 
 Verify the `oracle` user and its group memberships:
 
-```bash"
+```bash
 [root@binary ~]# id oracle
 uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(oper),54324(backupdba),54325(dgdba),54326(kmdba),54330(racdba)
 
@@ -341,7 +341,7 @@ Information: You may need to update /etc/fstab.
 
 Verify both ASM devices:
 
-```bashs
+```bash
 [root@binary ~]# lsblk /dev/sdb /dev/sdc
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sdb      8:16   0  100G  0 disk
@@ -705,7 +705,7 @@ Change to the extracted combo patch directory:
 
 Display the size of each extracted patch directory:
 
-```bash id="ydr2d8"
+```bash
 [oracle@binary 39618711]$ du -sh * | sort -h
 24K     README.html
 36K     PatchSearch.xml
